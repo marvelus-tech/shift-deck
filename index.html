@@ -349,6 +349,23 @@ h1,h2{font-weight:600;letter-spacing:-.035em;line-height:1.04}
 .progress i{background:var(--primary)}
 .nav button{border-radius:0;background:#fff;border:1px solid var(--line);color:var(--ink)}
 .count b{color:var(--ink)}
+
+/* full viewport photo layer for dark slides */
+.bgphoto{position:fixed;inset:0;width:100vw;height:100vh;height:100dvh;z-index:0;pointer-events:none}
+.bgphoto .hero{position:absolute;inset:0;opacity:0;transition:opacity .55s ease}
+body.bg-s1 .bgphoto .hero:not(.alt),body.bg-s12 .bgphoto .hero.alt{opacity:1}
+.deck{z-index:1}
+@media (prefers-reduced-motion:reduce){.bgphoto .hero{transition:none}}
+@media (max-height:520px) and (min-aspect-ratio:4/5) and (min-width:761px){
+  .deck{padding-bottom:50px}
+  .frame{width:min(100vw,calc((100vh - 50px)*1.7778));height:min(56.25vw,calc(100vh - 50px))}
+  .nav{bottom:8px}.nav button{width:34px;height:34px}
+  .inner{padding:34px 8% 22px}
+  .cost p,.tile p,.pair p,.pstep p,.m p,.feat p,.node p,.steps li,.lead,.plan p,.tiers td,.fine{font-size:11.5px}
+  .cost h3,.tile h3,.pair h3,.feat h3,.pstep h3,.m h3,.plan h3,.tiers h3{font-size:13.5px}
+  .cost{min-height:0;padding:14px 12px 16px}.cost .bar{margin-bottom:12px}
+}
+
 /* dark hero slides, same photo and overlay as the prototype hero */
 .hero{position:absolute;inset:0;background:linear-gradient(90deg,rgba(22,21,19,.72) 0%,rgba(22,21,19,.42) 42%,rgba(22,21,19,.18) 100%),url("assets/img/hero-road.webp") center/cover no-repeat}
 .hero.alt{background:linear-gradient(90deg,rgba(22,21,19,.86) 0%,rgba(22,21,19,.7) 50%,rgba(22,21,19,.5) 100%),url("assets/img/hero-road.webp") center/cover no-repeat}
@@ -381,18 +398,17 @@ h1,h2{font-weight:600;letter-spacing:-.035em;line-height:1.04}
 </head>
 <body>
 <div class="progress" aria-hidden="true"><i></i></div>
+<div class="bgphoto" aria-hidden="true"><div class="hero"></div><div class="hero alt"></div></div>
 <main class="deck" id="deck" aria-roledescription="presentation">
 <div class="frame">
 
 <!-- 1 COVER -->
 <section class="slide s1 dark" aria-label="Cover">
-  <div class="hero" aria-hidden="true"></div>
   <div class="inner">
     <h1 class="mark"><span class="sl">/</span>SHIFT</h1>
     <p class="for">Prepared for <strong data-cfg="clientName">Your Fleet</strong></p>
     <p class="tag">From spreadsheets and Marketplace to one platform.</p>
   </div>
-  <div class="brand">by MarvelUs</div>
 </section>
 
 <!-- 2 TODAY -->
@@ -413,7 +429,6 @@ h1,h2{font-weight:600;letter-spacing:-.035em;line-height:1.04}
       <li><span class="num">07</span>Coordinate pickup</li>
     </ol>
   </div></div>
-  <div class="brand">by MarvelUs</div>
 </section>
 
 <!-- 3 COST -->
@@ -429,7 +444,6 @@ h1,h2{font-weight:600;letter-spacing:-.035em;line-height:1.04}
       <div class="cost card"><span class="bar"></span><h3>Slipped maintenance</h3><p>Service tasks live in a workbook or in memory.</p></div>
     </div>
   </div>
-  <div class="brand">by MarvelUs</div>
 </section>
 
 <!-- 4 IDEA -->
@@ -462,7 +476,6 @@ h1,h2{font-weight:600;letter-spacing:-.035em;line-height:1.04}
       </div>
     </div>
   </div>
-  <div class="brand">by MarvelUs</div>
 </section>
 
 <!-- 5 PRODUCT -->
@@ -479,12 +492,11 @@ h1,h2{font-weight:600;letter-spacing:-.035em;line-height:1.04}
       <a class="btn" data-cfg-href="prototypeUrl" href="https://shift-hub-MarvelUs.replit.app" target="_blank" rel="noopener">View live prototype <span class="arr">&rarr;</span></a>
     </div>
     <div class="shots">
-      <div class="browser"><div class="bar"><i></i><i></i><i></i><em>shift-hub-marvelus.replit.app</em></div><img src="assets/img/proto-desktop.jpg" alt="SHIFT renter storefront on desktop, live prototype"></div>
+      <div class="browser"><div class="bar"><i></i><i></i><i></i></div><img src="assets/img/proto-desktop.jpg" alt="SHIFT renter storefront on desktop, live prototype"></div>
       <div class="phone"><img src="assets/img/proto-mobile.jpg" alt="SHIFT renter storefront on a phone, live prototype"></div>
       <p class="caption">Renter storefront, live prototype</p>
     </div>
   </div></div>
-  <div class="brand">by MarvelUs</div>
 </section>
 
 <!-- 6 PROCESS -->
@@ -501,7 +513,6 @@ h1,h2{font-weight:600;letter-spacing:-.035em;line-height:1.04}
       <div class="pstep"><div class="dot">6</div><h3>Monthly plan begins</h3><p>Billing starts once the MVP is ready.</p></div>
     </div>
   </div>
-  <div class="brand">by MarvelUs</div>
 </section>
 
 <!-- 7 MVP -->
@@ -519,7 +530,6 @@ h1,h2{font-weight:600;letter-spacing:-.035em;line-height:1.04}
       <div class="tile card"><h3>Revenue</h3><p>What the fleet is earning, without an Excel export.</p></div>
     </div>
   </div></div>
-  <div class="brand">by MarvelUs</div>
 </section>
 
 <!-- 8 V1 -->
@@ -539,7 +549,6 @@ h1,h2{font-weight:600;letter-spacing:-.035em;line-height:1.04}
       <ul><li>Design</li><li>Dev</li><li>Test</li></ul>
     </div>
   </div></div>
-  <div class="brand">by MarvelUs</div>
 </section>
 
 <!-- 9 V2 -->
@@ -556,7 +565,6 @@ h1,h2{font-weight:600;letter-spacing:-.035em;line-height:1.04}
       <ul><li>Design</li><li>Dev</li><li>Test</li></ul>
     </div>
   </div></div>
-  <div class="brand">by MarvelUs</div>
 </section>
 
 <!-- 10 TIMELINE -->
@@ -577,7 +585,6 @@ h1,h2{font-weight:600;letter-spacing:-.035em;line-height:1.04}
       </div>
     </div>
   </div>
-  <div class="brand">by MarvelUs</div>
 </section>
 
 <!-- 11 PRICING -->
@@ -605,12 +612,10 @@ h1,h2{font-weight:600;letter-spacing:-.035em;line-height:1.04}
     </div>
     <p class="fine"><b>Prices in AUD.</b> Monthly payments start once the MVP is ready.</p>
   </div>
-  <div class="brand">by MarvelUs</div>
 </section>
 
 <!-- 12 NEXT -->
 <section class="slide s12 dark" aria-label="Next step">
-  <div class="hero alt" aria-hidden="true"></div>
   <div class="inner"><div class="grid">
     <div>
       <p class="eyebrow">Next step</p>
@@ -624,7 +629,6 @@ h1,h2{font-weight:600;letter-spacing:-.035em;line-height:1.04}
       <a class="btn" data-cfg-href="bookingLink" href="#" target="_blank" rel="noopener">Book the discovery call <span class="arr">&rarr;</span></a>
     </div>
   </div></div>
-  <div class="brand">by MarvelUs</div>
 </section>
 
 </div>
@@ -663,7 +667,7 @@ h1,h2{font-weight:600;letter-spacing:-.035em;line-height:1.04}
     n = Math.min(Math.max(n,0),N-1); if (n === i) return; i = n;
     slides.forEach((s,k)=>{ s.classList.toggle('active',k===n); s.classList.toggle('before',k<n); s.setAttribute('aria-hidden',k!==n); s.inert = k!==n; if(k===n) s.scrollTop = 0; });
     bar.style.width = ((n+1)/N*100) + '%';
-    cur.textContent = n+1; document.body.classList.toggle('on-dark', slides[n].classList.contains('dark')); prev.disabled = n===0; next.disabled = n===N-1;
+    cur.textContent = n+1; document.body.classList.toggle('on-dark', slides[n].classList.contains('dark')); document.body.classList.toggle('bg-s1', slides[n].classList.contains('s1')); document.body.classList.toggle('bg-s12', slides[n].classList.contains('s12')); prev.disabled = n===0; next.disabled = n===N-1;
     if (location.hash !== '#'+(n+1)) history.replaceState(null,'','#'+(n+1));
   }
   const fwd = ()=>go(i+1), back = ()=>go(i-1);
