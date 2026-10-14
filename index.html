@@ -1,0 +1,670 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>SHIFT</title>
+<meta name="description" content="From spreadsheets and Marketplace to one platform.">
+<meta property="og:type" content="website">
+<meta property="og:title" content="SHIFT">
+<meta property="og:description" content="From spreadsheets and Marketplace to one platform.">
+<meta property="og:image" content="https://marvelus-tech.github.io/shift-deck/assets/img/og.jpg">
+<meta property="og:url" content="https://marvelus-tech.github.io/shift-deck/">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="SHIFT">
+<meta name="twitter:description" content="From spreadsheets and Marketplace to one platform.">
+<meta name="twitter:image" content="https://marvelus-tech.github.io/shift-deck/assets/img/og.jpg">
+<meta name="theme-color" content="#F4EEE6">
+<script>
+/* ============================================================
+   CONFIG: edit these for each client. Nothing else needs to change.
+   ============================================================ */
+const CONFIG = {
+  clientName:   "Your Fleet",
+  contactName:  "[contact name]",
+  contactEmail: "[contact email]",
+  contactPhone: "[contact phone]",
+  bookingLink:  "[booking link]",
+  prototypeUrl: "https://shift-hub-MarvelUs.replit.app"
+};
+</script>
+<style>
+@font-face{font-family:"Inter";src:url("assets/fonts/Inter-Variable.ttf") format("truetype");font-weight:100 900;font-style:normal;font-display:swap}
+:root{
+  --bg:#F4EEE6; --ink:#16181D; --muted:#5d616b; --soft:#8a8d95; --line:rgba(22,24,29,.10);
+  --card:rgba(255,255,255,.62); --o:#f97316; --v:#8b5cf6; --b:#3b82f6;
+  --grad:linear-gradient(90deg,#f97316,#8b5cf6,#3b82f6);
+}
+@supports (background:linear-gradient(in oklch 90deg,red,blue)){
+  :root{--grad:linear-gradient(in oklch 90deg,#f97316,#8b5cf6,#3b82f6)}
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{height:100%;background:var(--bg);color:var(--ink);overflow:hidden}
+body{font-family:"Inter",system-ui,sans-serif;-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility;font-feature-settings:"cv11","ss01";-webkit-tap-highlight-color:transparent}
+a{color:inherit}
+.deck{position:fixed;inset:0;display:grid;place-items:center;overflow:hidden;touch-action:pan-y}
+.frame{position:relative;width:min(100vw,177.7778vh);height:min(56.25vw,100vh);container-type:size;--s:calc(100cqw/1920)}
+.slide{position:absolute;inset:0;overflow:hidden;opacity:0;visibility:hidden;transform:translateX(1.5%);
+  transition:opacity .55s ease,transform .7s cubic-bezier(.2,.7,.2,1),visibility 0s linear .7s}
+.slide.before{transform:translateX(-1.5%)}
+.slide.active{opacity:1;visibility:visible;transform:none;transition:opacity .55s ease,transform .7s cubic-bezier(.2,.7,.2,1),visibility 0s}
+@media (prefers-reduced-motion:reduce){.slide,.slide.active{transition:none;transform:none}}
+
+/* washes: very soft, no hard edges */
+.washes{position:absolute;inset:0;overflow:hidden;pointer-events:none}
+.wash{position:absolute;border-radius:50%;pointer-events:none;filter:blur(calc(90 * var(--s)));opacity:.55}
+.wash.o{background:radial-gradient(closest-side,rgba(249,115,22,.55),rgba(249,115,22,0))}
+.wash.v{background:radial-gradient(closest-side,rgba(139,92,246,.45),rgba(139,92,246,0))}
+.wash.b{background:radial-gradient(closest-side,rgba(59,130,246,.42),rgba(59,130,246,0))}
+
+.inner{position:relative;z-index:1;height:100%;padding:calc(118 * var(--s)) calc(150 * var(--s)) calc(150 * var(--s));display:flex;flex-direction:column;justify-content:center}
+.eyebrow{font-size:max(calc(21 * var(--s)),11px);font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:var(--soft);margin-bottom:calc(26 * var(--s))}
+.eyebrow b{background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent;font-weight:700}
+h1,h2{font-weight:680;letter-spacing:-.038em;line-height:1.03}
+h2{font-size:calc(78 * var(--s));max-width:calc(1250 * var(--s))}
+.g{background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent;padding-bottom:.06em}
+.lead{font-size:max(calc(30 * var(--s)),15px);line-height:1.42;color:var(--muted);margin-top:calc(26 * var(--s));max-width:calc(980 * var(--s));font-weight:420}
+.card{background:var(--card);border:1px solid rgba(255,255,255,.75);box-shadow:0 1px 0 rgba(22,24,29,.04),0 calc(24 * var(--s)) calc(60 * var(--s)) rgba(22,24,29,.05);border-radius:calc(28 * var(--s))}
+.num{font-variant-numeric:tabular-nums;font-weight:600;color:var(--soft)}
+.brand{position:absolute;left:calc(150 * var(--s));bottom:calc(58 * var(--s));z-index:2;font-size:max(calc(19 * var(--s)),11px);font-weight:600;letter-spacing:.02em;color:var(--soft)}
+
+/* ---------- 1 cover ---------- */
+.s1 .inner{justify-content:center}
+.s1 .mark{font-size:calc(360 * var(--s));font-weight:800;letter-spacing:-.065em;line-height:.9;margin-left:calc(-14 * var(--s))}
+.s1 .for{font-size:max(calc(30 * var(--s)),15px);color:var(--muted);margin-top:calc(46 * var(--s));font-weight:450}
+.s1 .for strong{color:var(--ink);font-weight:620}
+.s1 .tag{font-size:calc(54 * var(--s));font-weight:600;letter-spacing:-.03em;line-height:1.12;margin-top:calc(18 * var(--s));max-width:calc(1500 * var(--s))}
+
+/* ---------- 2 today ---------- */
+.s2 .grid{display:grid;grid-template-columns:1fr 1fr;gap:calc(110 * var(--s));align-items:center}
+.chips{display:flex;flex-wrap:wrap;gap:calc(14 * var(--s));margin-top:calc(52 * var(--s))}
+.chip{font-size:max(calc(24 * var(--s)),13px);font-weight:520;padding:calc(14 * var(--s)) calc(26 * var(--s));border-radius:999px;background:var(--card);border:1px solid var(--line)}
+.steps{list-style:none}
+.steps li{display:flex;gap:calc(30 * var(--s));align-items:baseline;padding:calc(19 * var(--s)) 0;border-bottom:1px solid var(--line);font-size:max(calc(29 * var(--s)),14px);font-weight:480}
+.steps li:first-child{border-top:1px solid var(--line)}
+.steps .num{font-size:max(calc(20 * var(--s)),11px);width:calc(36 * var(--s));flex:none}
+.steps .who{margin-left:auto;font-size:max(calc(19 * var(--s)),11px);font-weight:600;color:var(--soft);letter-spacing:.06em;text-transform:uppercase}
+
+/* ---------- 3 cost ---------- */
+.costs{display:grid;grid-template-columns:repeat(5,1fr);gap:calc(22 * var(--s));margin-top:calc(70 * var(--s))}
+.cost{padding:calc(40 * var(--s)) calc(32 * var(--s)) calc(44 * var(--s));min-height:calc(330 * var(--s));display:flex;flex-direction:column}
+.cost .bar{width:calc(44 * var(--s));height:calc(5 * var(--s));border-radius:9px;background:var(--grad);margin-bottom:calc(40 * var(--s))}
+.cost h3{font-size:max(calc(31 * var(--s)),16px);font-weight:650;letter-spacing:-.02em;line-height:1.15}
+.cost p{font-size:max(calc(23 * var(--s)),13px);line-height:1.42;color:var(--muted);margin-top:calc(16 * var(--s))}
+
+/* ---------- 4 idea ---------- */
+.flows{margin-top:calc(60 * var(--s));display:grid;gap:calc(46 * var(--s))}
+.flowhead{display:flex;align-items:baseline;gap:calc(18 * var(--s));margin-bottom:calc(20 * var(--s))}
+.flowhead h3{font-size:max(calc(28 * var(--s)),14px);font-weight:650;letter-spacing:-.015em}
+.flowhead span{font-size:max(calc(22 * var(--s)),12px);color:var(--soft);font-weight:500}
+.flow{display:grid;gap:calc(14 * var(--s));position:relative}
+.flow.before{grid-template-columns:repeat(7,1fr)}
+.flow.after{grid-template-columns:repeat(5,1fr)}
+.node{padding:calc(22 * var(--s)) calc(22 * var(--s)) calc(24 * var(--s));border-radius:calc(20 * var(--s));background:rgba(255,255,255,.45);border:1px solid var(--line);position:relative}
+.node .who{font-size:max(calc(16 * var(--s)),10px);font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--soft)}
+.node p{font-size:max(calc(22 * var(--s)),12px);font-weight:520;line-height:1.28;margin-top:calc(10 * var(--s))}
+.flow.before .node p{color:#4a4d55}
+.flow.after .node{background:#fff;border-color:rgba(255,255,255,.9);box-shadow:0 calc(20 * var(--s)) calc(50 * var(--s)) rgba(22,24,29,.06)}
+.flow.after .node.auto{background:linear-gradient(#fff,#fff) padding-box,var(--grad) border-box;border:2px solid transparent}
+.flow.after .node.auto .who{background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent}
+
+/* ---------- 5 product ---------- */
+.s5 .inner{padding-top:calc(100 * var(--s));padding-bottom:calc(130 * var(--s))}
+.s5 .grid{display:grid;grid-template-columns:calc(700 * var(--s)) 1fr;gap:calc(90 * var(--s));align-items:center}
+.s5 h2{font-size:calc(70 * var(--s))}
+.feats{margin-top:calc(44 * var(--s));display:grid;gap:calc(30 * var(--s))}
+.feat h3{font-size:max(calc(28 * var(--s)),15px);font-weight:650;letter-spacing:-.015em;display:flex;gap:calc(14 * var(--s));align-items:baseline}
+.feat h3 small{font-size:max(calc(17 * var(--s)),10px);font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--soft)}
+.feat p{font-size:max(calc(23 * var(--s)),13px);line-height:1.42;color:var(--muted);margin-top:calc(8 * var(--s))}
+.btn{display:inline-flex;align-items:center;gap:calc(14 * var(--s));margin-top:calc(46 * var(--s));font-size:max(calc(24 * var(--s)),14px);font-weight:600;text-decoration:none;color:#fff;background:var(--ink);padding:calc(20 * var(--s)) calc(34 * var(--s));border-radius:999px;width:max-content}
+.btn .arr{display:inline-block;transition:transform .3s}
+.btn:hover .arr{transform:translateX(4px)}
+.shots{position:relative;height:calc(720 * var(--s))}
+.browser{position:absolute;left:0;top:calc(30 * var(--s));width:calc(900 * var(--s));border-radius:calc(18 * var(--s));overflow:hidden;background:#fff;box-shadow:0 calc(40 * var(--s)) calc(90 * var(--s)) rgba(22,24,29,.16),0 0 0 1px rgba(22,24,29,.06)}
+.browser .bar{height:calc(38 * var(--s));display:flex;align-items:center;gap:calc(9 * var(--s));padding:0 calc(18 * var(--s));background:#f3f1ee;border-bottom:1px solid var(--line)}
+.browser .bar i{width:calc(11 * var(--s));height:calc(11 * var(--s));border-radius:50%;background:#d9d5cf;display:block}
+.browser .bar em{margin-left:calc(16 * var(--s));font-style:normal;font-size:max(calc(15 * var(--s)),9px);color:var(--soft);font-weight:500}
+.browser img{display:block;width:100%;aspect-ratio:1440/900}
+.phone{position:absolute;right:calc(-10 * var(--s));bottom:calc(-20 * var(--s));width:calc(250 * var(--s));border-radius:calc(38 * var(--s));padding:calc(9 * var(--s));background:#16181D;box-shadow:0 calc(40 * var(--s)) calc(80 * var(--s)) rgba(22,24,29,.25)}
+.phone img{display:block;width:100%;border-radius:calc(30 * var(--s));aspect-ratio:390/844;object-fit:cover}
+.caption{position:absolute;left:0;bottom:calc(-6 * var(--s));font-size:max(calc(17 * var(--s)),10px);color:var(--soft);font-weight:500}
+
+/* ---------- 6 process ---------- */
+.proc{display:grid;grid-template-columns:repeat(6,1fr);gap:calc(18 * var(--s));margin-top:calc(80 * var(--s));position:relative}
+.proc::before{content:"";position:absolute;left:calc(30 * var(--s));right:calc(30 * var(--s));top:calc(29 * var(--s));height:2px;background:var(--grad);opacity:.35}
+.pstep{position:relative}
+.dot{width:calc(60 * var(--s));height:calc(60 * var(--s));border-radius:50%;display:grid;place-items:center;background:#fff;border:1px solid var(--line);font-size:max(calc(22 * var(--s)),12px);font-weight:650;position:relative;z-index:1}
+.pstep.key .dot{background:var(--grad);color:#fff;border:0}
+.pstep h3{font-size:max(calc(28 * var(--s)),14px);font-weight:650;letter-spacing:-.015em;margin-top:calc(34 * var(--s));line-height:1.18}
+.pstep p{font-size:max(calc(22 * var(--s)),12px);color:var(--muted);line-height:1.42;margin-top:calc(12 * var(--s))}
+.pstep .price{display:inline-block;margin-top:calc(14 * var(--s));font-size:max(calc(20 * var(--s)),11px);font-weight:650;padding:calc(7 * var(--s)) calc(16 * var(--s));border-radius:999px;background:#fff;border:1px solid var(--line)}
+
+/* ---------- 7 MVP ---------- */
+.s7 .grid{display:grid;grid-template-columns:1fr calc(860 * var(--s));gap:calc(100 * var(--s));align-items:center}
+.tiles{display:grid;grid-template-columns:1fr 1fr;gap:calc(22 * var(--s))}
+.tile{padding:calc(38 * var(--s)) calc(36 * var(--s)) calc(40 * var(--s));min-height:calc(250 * var(--s))}
+.tile h3{font-size:max(calc(30 * var(--s)),15px);font-weight:650;letter-spacing:-.02em}
+.tile p{font-size:max(calc(22 * var(--s)),12px);color:var(--muted);line-height:1.42;margin-top:calc(12 * var(--s))}
+.status{display:flex;gap:calc(10 * var(--s));flex-wrap:wrap;margin-top:calc(22 * var(--s))}
+.status span{font-size:max(calc(17 * var(--s)),10px);font-weight:600;padding:calc(6 * var(--s)) calc(14 * var(--s));border-radius:999px;background:#fff;border:1px solid var(--line);display:inline-flex;align-items:center;gap:calc(8 * var(--s))}
+.status span::before{content:"";width:calc(9 * var(--s));height:calc(9 * var(--s));border-radius:50%;background:currentColor}
+.st-a{color:#2f9e5b}.st-b{color:var(--b)}.st-m{color:var(--o)}
+
+/* ---------- 8 / 9 updates ---------- */
+.upd{display:grid;grid-template-columns:1fr calc(560 * var(--s));gap:calc(110 * var(--s));align-items:center}
+.time{padding:calc(56 * var(--s)) calc(54 * var(--s))}
+.time .big{font-size:calc(104 * var(--s));font-weight:720;letter-spacing:-.045em;line-height:1}
+.time .lbl{font-size:max(calc(20 * var(--s)),11px);font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--soft);margin-bottom:calc(22 * var(--s))}
+.time ul{list-style:none;display:flex;gap:calc(10 * var(--s));margin-top:calc(34 * var(--s));flex-wrap:wrap}
+.time li{font-size:max(calc(21 * var(--s)),12px);font-weight:560;padding:calc(9 * var(--s)) calc(18 * var(--s));border-radius:999px;background:#fff;border:1px solid var(--line)}
+.pair{display:grid;grid-template-columns:1fr 1fr;gap:calc(22 * var(--s));margin-top:calc(56 * var(--s));max-width:calc(1000 * var(--s))}
+.pair .card{padding:calc(34 * var(--s)) calc(34 * var(--s)) calc(38 * var(--s))}
+.pair h3{font-size:max(calc(28 * var(--s)),15px);font-weight:650;letter-spacing:-.015em}
+.pair p{font-size:max(calc(22 * var(--s)),12px);color:var(--muted);line-height:1.42;margin-top:calc(10 * var(--s))}
+
+/* ---------- 10 timeline ---------- */
+.tl{margin-top:calc(90 * var(--s));position:relative}
+.ms{position:relative}
+.tl .track{position:absolute;left:0;right:0;top:calc(10 * var(--s));height:calc(6 * var(--s));border-radius:9px;background:var(--grad);opacity:.85}
+.phases{display:grid;grid-template-columns:2fr 2fr 2fr;gap:calc(18 * var(--s));margin-bottom:calc(60 * var(--s))}
+.phase{font-size:max(calc(19 * var(--s)),11px);font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--soft);border-top:1px solid var(--line);padding-top:calc(16 * var(--s))}
+.ms{display:grid;grid-template-columns:repeat(6,1fr);gap:calc(18 * var(--s))}
+.m .pin{width:calc(26 * var(--s));height:calc(26 * var(--s));border-radius:50%;background:#fff;border:calc(6 * var(--s)) solid var(--ink);margin-bottom:calc(44 * var(--s));position:relative;z-index:1}
+.m h3{font-size:max(calc(28 * var(--s)),14px);font-weight:650;letter-spacing:-.015em;line-height:1.18}
+.m p{font-size:max(calc(21 * var(--s)),12px);color:var(--muted);line-height:1.4;margin-top:calc(10 * var(--s))}
+
+/* ---------- 11 pricing ---------- */
+.s11 .inner{padding-top:calc(96 * var(--s));padding-bottom:calc(136 * var(--s))}
+.s11 h2{font-size:calc(70 * var(--s))}
+.price-grid{display:grid;grid-template-columns:1.25fr 1fr;gap:calc(36 * var(--s));margin-top:calc(50 * var(--s));align-items:stretch}
+.plans{display:grid;gap:calc(18 * var(--s))}
+.plan{display:grid;grid-template-columns:calc(60 * var(--s)) 1fr auto;align-items:center;gap:calc(22 * var(--s));padding:calc(30 * var(--s)) calc(38 * var(--s))}
+.plan .num{font-size:max(calc(22 * var(--s)),12px)}
+.plan h3{font-size:max(calc(29 * var(--s)),15px);font-weight:650;letter-spacing:-.015em}
+.plan p{font-size:max(calc(21 * var(--s)),12px);color:var(--muted);margin-top:calc(6 * var(--s))}
+.plan .amt{font-size:calc(52 * var(--s));font-weight:720;letter-spacing:-.035em;text-align:right;line-height:1}
+.plan .amt small{font-size:max(calc(22 * var(--s)),12px);font-weight:550;color:var(--muted);letter-spacing:0}
+.tiers{padding:calc(34 * var(--s)) calc(40 * var(--s)) calc(30 * var(--s))}
+.tiers .lbl{font-size:max(calc(19 * var(--s)),11px);font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--soft)}
+.tiers h3{font-size:max(calc(29 * var(--s)),15px);font-weight:650;letter-spacing:-.015em;margin-top:calc(10 * var(--s));margin-bottom:calc(14 * var(--s))}
+.tiers table{width:100%;border-collapse:collapse}
+.tiers td{font-size:max(calc(24 * var(--s)),13px);padding:calc(15 * var(--s)) 0;border-top:1px solid var(--line);font-weight:480}
+.tiers td:last-child{text-align:right;font-weight:650;font-variant-numeric:tabular-nums}
+.tiers tr.trial td:last-child{background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent}
+.fine{font-size:max(calc(21 * var(--s)),12px);color:var(--muted);margin-top:calc(28 * var(--s))}
+.fine b{color:var(--ink);font-weight:620}
+
+/* ---------- 12 next ---------- */
+.s12 .grid{display:grid;grid-template-columns:1fr calc(680 * var(--s));gap:calc(110 * var(--s));align-items:center}
+.s12 h2{font-size:calc(96 * var(--s))}
+.contact{padding:calc(50 * var(--s)) calc(52 * var(--s))}
+.contact .row{padding:calc(20 * var(--s)) 0;border-bottom:1px solid var(--line)}
+.contact .row:first-child{padding-top:0}
+.contact .k{font-size:max(calc(17 * var(--s)),10px);font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--soft)}
+.contact .v{font-size:max(calc(28 * var(--s)),15px);font-weight:560;margin-top:calc(6 * var(--s));text-decoration:none;display:block;word-break:break-word}
+.contact .btn{margin-top:calc(38 * var(--s));background:var(--grad);font-size:max(calc(25 * var(--s)),15px)}
+
+/* ---------- chrome ---------- */
+.progress{position:fixed;left:0;top:0;height:3px;width:100%;background:rgba(22,24,29,.06);z-index:10}
+.progress i{display:block;height:100%;width:0;background:var(--grad);transition:width .5s cubic-bezier(.2,.7,.2,1)}
+.nav{position:fixed;right:max(2.2vw,14px);bottom:max(2.4vh,14px);z-index:10;display:flex;align-items:center;gap:10px}
+.count{font-size:13px;font-weight:600;color:var(--soft);font-variant-numeric:tabular-nums;margin-right:6px;letter-spacing:.02em}
+.count b{color:var(--ink);font-weight:650}
+.nav button{width:42px;height:42px;border-radius:50%;border:1px solid var(--line);background:rgba(255,255,255,.75);color:var(--ink);cursor:pointer;display:grid;place-items:center;transition:background .2s,opacity .2s}
+.nav button:hover{background:#fff}
+.nav button:disabled{opacity:.35;cursor:default}
+.nav svg{width:18px;height:18px}
+@media (prefers-reduced-motion:reduce){.progress i{transition:none}}
+
+/* =================== phone / narrow =================== */
+@media (max-width:760px),(max-aspect-ratio:4/5){
+  .frame{width:100vw;height:100vh;height:100dvh;--s:calc(100cqw/860)}
+  .slide{overflow-y:auto;-webkit-overflow-scrolling:touch}
+  .inner{height:auto;min-height:100%;padding:62px 24px 92px;justify-content:center}
+  .brand{left:24px;bottom:30px}
+  .eyebrow{margin-bottom:12px}
+  h2,.s5 h2,.s11 h2{font-size:31px;letter-spacing:-.035em}
+  .lead{margin-top:12px;font-size:15.5px}
+  .grid,.s2 .grid,.s5 .grid,.s7 .grid,.s12 .grid,.upd,.price-grid{grid-template-columns:1fr !important;gap:22px}
+  .s1 .mark{font-size:31vw;margin-left:-4px}
+  .s1 .for{margin-top:24px}
+  .s1 .tag{font-size:27px;margin-top:8px}
+  .chips{margin-top:20px;gap:7px}
+  .chip{padding:6px 12px;font-size:13px}
+  .steps li{padding:9px 0;gap:14px;font-size:15px}
+  .steps .num{width:20px}
+  .costs{grid-template-columns:1fr;gap:9px;margin-top:22px}
+  .cost{min-height:0;padding:14px 16px;border-radius:16px;display:grid;grid-template-columns:4px 1fr;column-gap:14px}
+  .cost .bar{width:4px;height:auto;grid-row:1/3;margin:0}
+  .cost h3{font-size:16px}.cost p{font-size:13.5px;margin-top:3px}
+  .flows{margin-top:20px;grid-template-columns:1fr 1fr;gap:12px}
+  .flowhead{display:block;margin-bottom:8px}
+  .flowhead h3{font-size:14.5px}.flowhead span{display:block;font-size:12px;margin-top:2px}
+  .flow.before,.flow.after{grid-template-columns:1fr;gap:6px}
+  .node{padding:7px 10px 8px;border-radius:11px}
+  .node p{font-size:12.5px;margin-top:2px}
+  .node .who{font-size:9.5px}
+  .feats{margin-top:16px;gap:12px}
+  .feat h3{font-size:16px}.feat p{font-size:13.5px;margin-top:3px}
+  .btn{margin-top:18px;padding:11px 20px;font-size:14.5px}
+  .shots{height:auto;padding-bottom:40px}
+  .browser{position:relative;top:0;width:82%;border-radius:10px}
+  .browser .bar{height:16px;padding:0 8px;gap:4px}
+  .browser .bar i{width:5px;height:5px}
+  .browser .bar em{display:none}
+  .phone{width:31%;right:0;bottom:16px;border-radius:18px;padding:4px}
+  .phone img{border-radius:14px}
+  .caption{position:static;margin-top:10px;font-size:11px}
+  .proc{grid-template-columns:1fr;gap:12px;margin-top:24px}
+  .proc::before{left:17px;right:auto;top:18px;bottom:18px;width:2px;height:auto}
+  .pstep{display:grid;grid-template-columns:36px 1fr;column-gap:14px;align-items:start}
+  .dot{width:36px;height:36px;font-size:13px;grid-row:1/4}
+  .pstep h3{margin-top:0;font-size:15.5px;padding-top:7px}
+  .pstep p{font-size:13px;margin-top:2px}
+  .pstep .price{margin-top:5px;font-size:12px;padding:3px 10px;width:max-content}
+  .tiles{gap:9px}
+  .tile{min-height:0;padding:14px 14px 15px;border-radius:16px}
+  .tile h3{font-size:15.5px}.tile p{font-size:12.5px;margin-top:4px}
+  .status{gap:5px;margin-top:8px}.status span{font-size:10.5px;padding:3px 8px}
+  .time{padding:20px 20px;border-radius:18px}
+  .time .big{font-size:40px}.time .lbl{font-size:11px;margin-bottom:8px}
+  .time ul{margin-top:14px;gap:6px}.time li{font-size:12px;padding:4px 10px}
+  .pair{grid-template-columns:1fr;gap:9px;margin-top:20px}
+  .pair .card{padding:14px 16px;border-radius:16px}
+  .pair h3{font-size:16px}.pair p{font-size:13.5px;margin-top:3px}
+  .tl{margin-top:24px}
+  .tl .track{left:11px;right:auto;top:8px;bottom:8px;width:3px;height:auto}
+  .phases{display:none}
+  .ms{grid-template-columns:1fr;gap:16px}
+  .m{display:grid;grid-template-columns:24px 1fr;column-gap:16px}
+  .m .pin{width:25px;height:25px;border-width:5px;margin:0;grid-row:1/3}
+  .m h3{font-size:15.5px;padding-top:2px}.m p{font-size:13px;margin-top:2px}
+  .m .ph{display:block;font-size:10px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--soft);margin-bottom:2px}
+  .s11 .inner{padding-top:56px;padding-bottom:84px}
+  .price-grid{margin-top:18px;gap:10px}
+  .plans{gap:8px}
+  .plan{grid-template-columns:22px 1fr auto;gap:10px;padding:12px 14px;border-radius:16px}
+  .plan h3{font-size:14.5px}.plan p{font-size:11.5px;margin-top:1px}
+  .plan .amt{font-size:22px}.plan .amt small{font-size:11px}
+  .tiers{padding:12px 14px 8px;border-radius:16px}
+  .tiers .lbl{font-size:10px}.tiers h3{font-size:14.5px;margin:3px 0 4px}
+  .tiers td{font-size:13px;padding:6px 0}
+  .fine{font-size:11.5px;margin-top:10px}
+  .s12 h2{font-size:38px}
+  .contact{padding:20px 20px;border-radius:18px}
+  .contact .row{padding:10px 0}
+  .contact .v{font-size:16px}
+  .contact .btn{margin-top:18px}
+  .nav{right:14px;bottom:16px;gap:8px}
+  .nav button{width:38px;height:38px}
+  .count{font-size:12px}
+}
+.m .ph{display:none}
+@media (max-width:760px),(max-aspect-ratio:4/5){.m .ph{display:block}}
+</style>
+</head>
+<body>
+<div class="progress" aria-hidden="true"><i></i></div>
+<main class="deck" id="deck" aria-roledescription="presentation">
+<div class="frame">
+
+<!-- 1 COVER -->
+<section class="slide s1" aria-label="Cover">
+  <div class="washes">
+  <div class="wash o" style="width:calc(1100 * var(--s));height:calc(900 * var(--s));left:calc(-260 * var(--s));top:calc(-320 * var(--s))"></div>
+  <div class="wash v" style="width:calc(1200 * var(--s));height:calc(1000 * var(--s));right:calc(-300 * var(--s));top:calc(140 * var(--s))"></div>
+  <div class="wash b" style="width:calc(900 * var(--s));height:calc(800 * var(--s));left:calc(560 * var(--s));bottom:calc(-520 * var(--s))"></div>
+  </div>
+  <div class="inner">
+    <h1 class="mark g">SHIFT</h1>
+    <p class="for">Prepared for <strong data-cfg="clientName">Your Fleet</strong></p>
+    <p class="tag">From spreadsheets and Marketplace to one platform.</p>
+  </div>
+  <div class="brand">MarvelUs</div>
+</section>
+
+<!-- 2 TODAY -->
+<section class="slide s2" aria-label="Where you are today">
+  <div class="washes">
+  <div class="wash o" style="width:calc(900 * var(--s));height:calc(800 * var(--s));left:calc(-380 * var(--s));bottom:calc(-380 * var(--s))"></div>
+  <div class="wash v" style="width:calc(800 * var(--s));height:calc(700 * var(--s));right:calc(-360 * var(--s));top:calc(-300 * var(--s));opacity:.35"></div>
+  </div>
+  <div class="inner"><div class="grid">
+    <div>
+      <p class="eyebrow">Where you are today</p>
+      <h2>Five channels.<br>You carry <span class="g">every step.</span></h2>
+      <div class="chips"><span class="chip">Excel</span><span class="chip">Facebook Marketplace</span><span class="chip">Messages</span><span class="chip">Email</span><span class="chip">Phone</span></div>
+    </div>
+    <ol class="steps">
+      <li><span class="num">01</span>Refresh listings by hand</li>
+      <li><span class="num">02</span>Reply across Marketplace, email and phone</li>
+      <li><span class="num">03</span>Confirm the date and vehicle</li>
+      <li><span class="num">04</span>Take payment in person or by transfer</li>
+      <li><span class="num">05</span>Log payments in Excel</li>
+      <li><span class="num">06</span>Check ID yourself</li>
+      <li><span class="num">07</span>Coordinate pickup</li>
+    </ol>
+  </div></div>
+  <div class="brand">MarvelUs</div>
+</section>
+
+<!-- 3 COST -->
+<section class="slide s3" aria-label="What it costs you">
+  <div class="washes">
+  <div class="wash v" style="width:calc(1000 * var(--s));height:calc(800 * var(--s));right:calc(-300 * var(--s));top:calc(-380 * var(--s))"></div>
+  <div class="wash o" style="width:calc(800 * var(--s));height:calc(700 * var(--s));left:calc(-340 * var(--s));top:calc(420 * var(--s));opacity:.4"></div>
+  </div>
+  <div class="inner">
+    <p class="eyebrow">What it costs you</p>
+    <h2>Every manual step is a place <span class="g">where things slip.</span></h2>
+    <div class="costs">
+      <div class="cost card"><span class="bar"></span><h3>Double bookings</h3><p>Two renters, one car, when the spreadsheet falls behind.</p></div>
+      <div class="cost card"><span class="bar"></span><h3>Idle cars</h3><p>Cars drop off Marketplace and sit without earning.</p></div>
+      <div class="cost card"><span class="bar"></span><h3>Slow replies</h3><p>Renters book elsewhere while they wait for an answer.</p></div>
+      <div class="cost card"><span class="bar"></span><h3>Missed after hours bookings</h3><p>No one answers at night, so the booking goes.</p></div>
+      <div class="cost card"><span class="bar"></span><h3>Slipped maintenance</h3><p>Service tasks live in a workbook or in memory.</p></div>
+    </div>
+  </div>
+  <div class="brand">MarvelUs</div>
+</section>
+
+<!-- 4 IDEA -->
+<section class="slide s4" aria-label="The SHIFT idea">
+  <div class="washes">
+  <div class="wash b" style="width:calc(1000 * var(--s));height:calc(800 * var(--s));right:calc(-360 * var(--s));bottom:calc(-420 * var(--s))"></div>
+  <div class="wash o" style="width:calc(800 * var(--s));height:calc(700 * var(--s));left:calc(-380 * var(--s));top:calc(-360 * var(--s));opacity:.4"></div>
+  </div>
+  <div class="inner">
+    <p class="eyebrow">The <b>SHIFT</b> idea</p>
+    <h2>Move the repeatable steps <span class="g">into the product.</span></h2>
+    <div class="flows">
+      <div>
+        <div class="flowhead"><h3>Before</h3><span>You carry all 7 steps</span></div>
+        <div class="flow before">
+          <div class="node"><span class="who">You</span><p>Refresh listings</p></div>
+          <div class="node"><span class="who">You</span><p>Reply on every channel</p></div>
+          <div class="node"><span class="who">You</span><p>Confirm date and car</p></div>
+          <div class="node"><span class="who">You</span><p>Take payment</p></div>
+          <div class="node"><span class="who">You</span><p>Log it in Excel</p></div>
+          <div class="node"><span class="who">You</span><p>Check ID</p></div>
+          <div class="node"><span class="who">You</span><p>Coordinate pickup</p></div>
+        </div>
+      </div>
+      <div>
+        <div class="flowhead"><h3>With SHIFT</h3><span>You handle 3, the platform does the rest</span></div>
+        <div class="flow after">
+          <div class="node"><span class="who">You</span><p>Update availability</p></div>
+          <div class="node auto"><span class="who">Renter</span><p>Books in the storefront</p></div>
+          <div class="node auto"><span class="who">Stripe</span><p>Handles payment and identity</p></div>
+          <div class="node"><span class="who">You</span><p>Approve or deny</p></div>
+          <div class="node"><span class="who">You</span><p>Coordinate pickup</p></div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="brand">MarvelUs</div>
+</section>
+
+<!-- 5 PRODUCT -->
+<section class="slide s5" aria-label="What you get">
+  <div class="washes">
+  <div class="wash v" style="width:calc(1100 * var(--s));height:calc(900 * var(--s));right:calc(-200 * var(--s));top:calc(-260 * var(--s));opacity:.45"></div>
+  <div class="wash o" style="width:calc(800 * var(--s));height:calc(700 * var(--s));left:calc(-360 * var(--s));bottom:calc(-380 * var(--s));opacity:.4"></div>
+  </div>
+  <div class="inner"><div class="grid">
+    <div>
+      <p class="eyebrow">What you get</p>
+      <h2>One platform, <span class="g">three parts.</span></h2>
+      <div class="feats">
+        <div class="feat"><h3>Renter storefront <small>Mobile</small></h3><p>A familiar booking path in 5 steps, from dates to payment.</p></div>
+        <div class="feat"><h3>Owner console <small>Desktop</small></h3><p>Fleet status, bookings, revenue, pickups and returns in one view.</p></div>
+        <div class="feat"><h3>Renter assistant <small>After hours</small></h3><p>Answers questions on the active booking and hands incidents to you.</p></div>
+      </div>
+      <a class="btn" data-cfg-href="prototypeUrl" href="https://shift-hub-MarvelUs.replit.app" target="_blank" rel="noopener">View live prototype <span class="arr">&rarr;</span></a>
+    </div>
+    <div class="shots">
+      <div class="browser"><div class="bar"><i></i><i></i><i></i><em>shift-hub-marvelus.replit.app</em></div><img src="assets/img/proto-desktop.jpg" alt="SHIFT renter storefront on desktop, live prototype"></div>
+      <div class="phone"><img src="assets/img/proto-mobile.jpg" alt="SHIFT renter storefront on a phone, live prototype"></div>
+      <p class="caption">Renter storefront, live prototype</p>
+    </div>
+  </div></div>
+  <div class="brand">MarvelUs</div>
+</section>
+
+<!-- 6 PROCESS -->
+<section class="slide s6" aria-label="How we work together">
+  <div class="washes">
+  <div class="wash o" style="width:calc(1000 * var(--s));height:calc(800 * var(--s));left:calc(-300 * var(--s));top:calc(-420 * var(--s));opacity:.45"></div>
+  <div class="wash b" style="width:calc(1000 * var(--s));height:calc(800 * var(--s));right:calc(-360 * var(--s));bottom:calc(-440 * var(--s))"></div>
+  </div>
+  <div class="inner">
+    <p class="eyebrow">How we work together</p>
+    <h2>Six steps from first call <span class="g">to live software.</span></h2>
+    <div class="proc">
+      <div class="pstep"><div class="dot">1</div><h3>Intro call</h3><p>We learn how your fleet runs.</p><span class="price">Free, 30 mins</span></div>
+      <div class="pstep key"><div class="dot">2</div><h3>Discovery retainer</h3><p>Paid to start the work.</p><span class="price">$2,000</span></div>
+      <div class="pstep"><div class="dot">3</div><h3>Discovery</h3><p>We map your bookings, cars and channels.</p></div>
+      <div class="pstep"><div class="dot">4</div><h3>Adapt the prototype</h3><p>Shaped to your business.</p></div>
+      <div class="pstep key"><div class="dot">5</div><h3>MVP live</h3><p>Your fleet runs on SHIFT.</p></div>
+      <div class="pstep"><div class="dot">6</div><h3>Monthly plan begins</h3><p>Billing starts once the MVP is ready.</p></div>
+    </div>
+  </div>
+  <div class="brand">MarvelUs</div>
+</section>
+
+<!-- 7 MVP -->
+<section class="slide s7" aria-label="MVP">
+  <div class="washes">
+  <div class="wash v" style="width:calc(1000 * var(--s));height:calc(900 * var(--s));right:calc(-200 * var(--s));top:calc(-300 * var(--s));opacity:.45"></div>
+  <div class="wash o" style="width:calc(800 * var(--s));height:calc(700 * var(--s));left:calc(-380 * var(--s));bottom:calc(-360 * var(--s));opacity:.35"></div>
+  </div>
+  <div class="inner"><div class="grid">
+    <div>
+      <p class="eyebrow"><b>MVP</b></p>
+      <h2>Functional fleet management <span class="g">software.</span></h2>
+      <p class="lead">Fleet status, bookings, availability and revenue in one place, instead of across sheets, threads and memory.</p>
+    </div>
+    <div class="tiles">
+      <div class="tile card"><h3>Fleet status</h3><p>Every car at a glance.</p><div class="status"><span class="st-a">Available</span><span class="st-b">Booked</span><span class="st-m">Maintenance</span></div></div>
+      <div class="tile card"><h3>Bookings</h3><p>Requests in one list. Approve or deny each one.</p></div>
+      <div class="tile card"><h3>Availability</h3><p>Set which cars renters can book, and when.</p></div>
+      <div class="tile card"><h3>Revenue</h3><p>What the fleet is earning, without an Excel export.</p></div>
+    </div>
+  </div></div>
+  <div class="brand">MarvelUs</div>
+</section>
+
+<!-- 8 V1 -->
+<section class="slide s8" aria-label="v1 update">
+  <div class="washes">
+  <div class="wash o" style="width:calc(1000 * var(--s));height:calc(900 * var(--s));right:calc(-240 * var(--s));top:calc(-200 * var(--s));opacity:.5"></div>
+  <div class="wash b" style="width:calc(800 * var(--s));height:calc(700 * var(--s));left:calc(-380 * var(--s));bottom:calc(-420 * var(--s));opacity:.4"></div>
+  </div>
+  <div class="inner"><div class="upd">
+    <div>
+      <p class="eyebrow">Update <b>v1</b></p>
+      <h2>DocuSign and Stripe <span class="g">payment integration.</span></h2>
+      <div class="pair">
+        <div class="card"><h3>DocuSign</h3><p>Hire agreements sent and signed digitally.</p></div>
+        <div class="card"><h3>Stripe</h3><p>Payments taken inside the booking.</p></div>
+      </div>
+    </div>
+    <div class="time card">
+      <p class="lbl">Timeframe</p>
+      <p class="big g">2 to 4 weeks</p>
+      <ul><li>Design</li><li>Dev</li><li>Test</li></ul>
+    </div>
+  </div></div>
+  <div class="brand">MarvelUs</div>
+</section>
+
+<!-- 9 V2 -->
+<section class="slide s9" aria-label="v2 update">
+  <div class="washes">
+  <div class="wash b" style="width:calc(1000 * var(--s));height:calc(900 * var(--s));right:calc(-240 * var(--s));top:calc(-240 * var(--s));opacity:.55"></div>
+  <div class="wash v" style="width:calc(800 * var(--s));height:calc(700 * var(--s));left:calc(-360 * var(--s));bottom:calc(-400 * var(--s));opacity:.4"></div>
+  </div>
+  <div class="inner"><div class="upd">
+    <div>
+      <p class="eyebrow">Update <b>v2</b></p>
+      <h2>OCR <span class="g">technology.</span></h2>
+      <p class="lead">Software that reads text from images, for example driver licences and hire documents, so details are captured without retyping.</p>
+    </div>
+    <div class="time card">
+      <p class="lbl">Timeframe</p>
+      <p class="big g">2 to 4 weeks</p>
+      <ul><li>Design</li><li>Dev</li><li>Test</li></ul>
+    </div>
+  </div></div>
+  <div class="brand">MarvelUs</div>
+</section>
+
+<!-- 10 TIMELINE -->
+<section class="slide s10" aria-label="Timeline">
+  <div class="washes">
+  <div class="wash o" style="width:calc(900 * var(--s));height:calc(800 * var(--s));left:calc(-300 * var(--s));top:calc(-380 * var(--s));opacity:.4"></div>
+  <div class="wash v" style="width:calc(1000 * var(--s));height:calc(800 * var(--s));right:calc(-320 * var(--s));bottom:calc(-420 * var(--s));opacity:.45"></div>
+  </div>
+  <div class="inner">
+    <p class="eyebrow">Timeline</p>
+    <h2>From intro to <span class="g">v2.</span></h2>
+    <div class="tl">
+      <div class="phases"><div class="phase">Start</div><div class="phase">Launch</div><div class="phase">Grow</div></div>
+      <div class="ms">
+        <div class="track"></div>
+        <div class="m"><div class="pin"></div><div><span class="ph">Start</span><h3>Intro</h3><p>Free, 30 mins</p></div></div>
+        <div class="m"><div class="pin"></div><div><span class="ph">Start</span><h3>Retainer and discovery</h3><p>$2,000 retainer</p></div></div>
+        <div class="m"><div class="pin"></div><div><span class="ph">Launch</span><h3>MVP</h3><p>Fleet management live</p></div></div>
+        <div class="m"><div class="pin"></div><div><span class="ph">Launch</span><h3>Monthly begins</h3><p>Once the MVP is ready</p></div></div>
+        <div class="m"><div class="pin"></div><div><span class="ph">Grow</span><h3>v1 update</h3><p>DocuSign and Stripe, 2 to 4 weeks</p></div></div>
+        <div class="m"><div class="pin"></div><div><span class="ph">Grow</span><h3>v2 update</h3><p>OCR, 2 to 4 weeks</p></div></div>
+      </div>
+    </div>
+  </div>
+  <div class="brand">MarvelUs</div>
+</section>
+
+<!-- 11 PRICING -->
+<section class="slide s11" aria-label="Pricing">
+  <div class="washes">
+  <div class="wash v" style="width:calc(1000 * var(--s));height:calc(800 * var(--s));right:calc(-300 * var(--s));top:calc(-380 * var(--s));opacity:.45"></div>
+  <div class="wash o" style="width:calc(900 * var(--s));height:calc(800 * var(--s));left:calc(-380 * var(--s));bottom:calc(-420 * var(--s));opacity:.4"></div>
+  </div>
+  <div class="inner">
+    <p class="eyebrow">Pricing</p>
+    <h2>Simple, and it <span class="g">grows with your fleet.</span></h2>
+    <div class="price-grid">
+      <div class="plans">
+        <div class="plan card"><span class="num">1</span><div><h3>Intro</h3><p>30 mins</p></div><div class="amt">Free</div></div>
+        <div class="plan card"><span class="num">2</span><div><h3>Discovery retainer</h3><p>For the MVP</p></div><div class="amt">$2,000</div></div>
+        <div class="plan card"><span class="num">3</span><div><h3>Monthly</h3><p>Base, no active cars</p></div><div class="amt">$150<small>/month</small></div></div>
+      </div>
+      <div class="tiers card">
+        <p class="lbl">Plus one fleet tier</p>
+        <h3>Based on your fleet size</h3>
+        <table>
+          <tr class="trial"><td>First month trial</td><td>5 cars free</td></tr>
+          <tr><td>0 to 10 cars</td><td>+$25/month</td></tr>
+          <tr><td>10 to 30 cars</td><td>+$50/month</td></tr>
+          <tr><td>30 to 60 cars</td><td>+$100/month</td></tr>
+          <tr><td>60 to 100 cars</td><td>+$200/month</td></tr>
+        </table>
+      </div>
+    </div>
+    <p class="fine"><b>Prices in AUD.</b> Monthly payments start once the MVP is ready.</p>
+  </div>
+  <div class="brand">MarvelUs</div>
+</section>
+
+<!-- 12 NEXT -->
+<section class="slide s12" aria-label="Next step">
+  <div class="washes">
+  <div class="wash o" style="width:calc(1000 * var(--s));height:calc(900 * var(--s));left:calc(-300 * var(--s));top:calc(-300 * var(--s));opacity:.45"></div>
+  <div class="wash v" style="width:calc(1000 * var(--s));height:calc(900 * var(--s));right:calc(-300 * var(--s));bottom:calc(-400 * var(--s));opacity:.45"></div>
+  <div class="wash b" style="width:calc(700 * var(--s));height:calc(600 * var(--s));right:calc(400 * var(--s));top:calc(-420 * var(--s));opacity:.35"></div>
+  </div>
+  <div class="inner"><div class="grid">
+    <div>
+      <p class="eyebrow">Next step</p>
+      <h2>Book your <span class="g">discovery call.</span></h2>
+      <p class="lead">Start with a free 30 min intro. We look at how your fleet runs today and where SHIFT fits.</p>
+    </div>
+    <div class="contact card">
+      <div class="row"><p class="k">Contact</p><p class="v" data-cfg="contactName">[contact name]</p></div>
+      <div class="row"><p class="k">Email</p><a class="v" data-cfg="contactEmail" data-cfg-type="email" href="#">[contact email]</a></div>
+      <div class="row"><p class="k">Phone</p><a class="v" data-cfg="contactPhone" data-cfg-type="phone" href="#">[contact phone]</a></div>
+      <a class="btn" data-cfg-href="bookingLink" href="#" target="_blank" rel="noopener">Book the discovery call <span class="arr">&rarr;</span></a>
+    </div>
+  </div></div>
+  <div class="brand">MarvelUs</div>
+</section>
+
+</div>
+</main>
+
+<nav class="nav" aria-label="Slide navigation">
+  <span class="count" aria-live="polite"><b id="cur">1</b> / <span id="tot">12</span></span>
+  <button id="prev" aria-label="Previous slide"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 18l-6-6 6-6"/></svg></button>
+  <button id="next" aria-label="Next slide"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18l6-6-6-6"/></svg></button>
+</nav>
+
+<script>
+(function(){
+  // apply CONFIG
+  const isPlaceholder = v => !v || /^\s*\[.*\]\s*$/.test(v);
+  document.querySelectorAll('[data-cfg]').forEach(el=>{
+    const v = CONFIG[el.dataset.cfg]; if (v == null) return;
+    el.textContent = v;
+    const t = el.dataset.cfgType;
+    if (t === 'email') el.href = isPlaceholder(v) ? '#' : 'mailto:' + v.trim();
+    if (t === 'phone') el.href = isPlaceholder(v) ? '#' : 'tel:' + v.replace(/[^\d+]/g,'');
+  });
+  document.querySelectorAll('[data-cfg-href]').forEach(el=>{
+    const v = CONFIG[el.dataset.cfgHref];
+    if (isPlaceholder(v)) { el.href = '#'; el.removeAttribute('target'); el.title = 'Add the booking link in CONFIG'; }
+    else el.href = v;
+  });
+
+  const slides = Array.from(document.querySelectorAll('.slide'));
+  const N = slides.length, bar = document.querySelector('.progress i');
+  const cur = document.getElementById('cur'), prev = document.getElementById('prev'), next = document.getElementById('next');
+  document.getElementById('tot').textContent = N;
+  let i = -1;
+  function fromHash(){ const n = parseInt((location.hash||'').replace('#',''),10); return isNaN(n) ? 0 : Math.min(Math.max(n-1,0),N-1); }
+  function go(n){
+    n = Math.min(Math.max(n,0),N-1); if (n === i) return; i = n;
+    slides.forEach((s,k)=>{ s.classList.toggle('active',k===n); s.classList.toggle('before',k<n); s.setAttribute('aria-hidden',k!==n); s.inert = k!==n; if(k===n) s.scrollTop = 0; });
+    bar.style.width = ((n+1)/N*100) + '%';
+    cur.textContent = n+1; prev.disabled = n===0; next.disabled = n===N-1;
+    if (location.hash !== '#'+(n+1)) history.replaceState(null,'','#'+(n+1));
+  }
+  const fwd = ()=>go(i+1), back = ()=>go(i-1);
+  prev.addEventListener('click', e=>{e.stopPropagation(); back();});
+  next.addEventListener('click', e=>{e.stopPropagation(); fwd();});
+  document.addEventListener('keydown', e=>{
+    if (e.metaKey || e.ctrlKey || e.altKey) return;
+    const k = e.key;
+    if (k==='ArrowRight'||k==='ArrowDown'||k==='PageDown'||(k===' '&&!e.shiftKey)||k==='Enter'&&e.target===document.body){ e.preventDefault(); fwd(); }
+    else if (k==='ArrowLeft'||k==='ArrowUp'||k==='PageUp'||(k===' '&&e.shiftKey)){ e.preventDefault(); back(); }
+    else if (k==='Home'){ e.preventDefault(); go(0); }
+    else if (k==='End'){ e.preventDefault(); go(N-1); }
+  });
+  let swiped = false;
+  document.getElementById('deck').addEventListener('click', e=>{
+    if (swiped) { swiped = false; return; }
+    if (e.target.closest('a,button,input,select,textarea')) return;
+    if (String(window.getSelection && window.getSelection()).length) return;
+    (e.clientX < window.innerWidth/2) ? back() : fwd();
+  });
+  let sx=0, sy=0, st=0;
+  window.addEventListener('touchstart', e=>{ const t=e.changedTouches[0]; sx=t.clientX; sy=t.clientY; st=Date.now(); }, {passive:true});
+  window.addEventListener('touchend', e=>{
+    const t=e.changedTouches[0], dx=t.clientX-sx, dy=t.clientY-sy;
+    if (Math.abs(dx)>45 && Math.abs(dx)>Math.abs(dy)*1.3 && Date.now()-st<800){ swiped = true; setTimeout(()=>swiped=false,400); dx<0 ? fwd() : back(); }
+  }, {passive:true});
+  window.addEventListener('hashchange', ()=>go(fromHash()));
+  go(fromHash());
+})();
+</script>
+</body>
+</html>
