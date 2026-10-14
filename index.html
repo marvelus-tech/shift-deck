@@ -14,7 +14,7 @@
 <meta name="twitter:title" content="SHIFT">
 <meta name="twitter:description" content="From spreadsheets and Marketplace to one platform.">
 <meta name="twitter:image" content="https://marvelus-tech.github.io/shift-deck/assets/img/og.jpg">
-<meta name="theme-color" content="#F4EEE6">
+<meta name="theme-color" content="#f6f4ef">
 <script>
 /* ============================================================
    CONFIG: edit these for each client. Nothing else needs to change.
@@ -32,11 +32,8 @@ const CONFIG = {
 @font-face{font-family:"Inter";src:url("assets/fonts/Inter-Variable.ttf") format("truetype");font-weight:100 900;font-style:normal;font-display:swap}
 :root{
   --bg:#F4EEE6; --ink:#16181D; --muted:#5d616b; --soft:#8a8d95; --line:rgba(22,24,29,.10);
-  --card:rgba(255,255,255,.62); --o:#f97316; --v:#8b5cf6; --b:#3b82f6;
-  --grad:linear-gradient(90deg,#f97316,#8b5cf6,#3b82f6);
-}
-@supports (background:linear-gradient(in oklch 90deg,red,blue)){
-  :root{--grad:linear-gradient(in oklch 90deg,#f97316,#8b5cf6,#3b82f6)}
+  --card:#fff;
+  --grad:#1d4ed8;
 }
 *{box-sizing:border-box;margin:0;padding:0}
 html,body{height:100%;background:var(--bg);color:var(--ink);overflow:hidden}
@@ -148,7 +145,6 @@ h2{font-size:calc(78 * var(--s));max-width:calc(1250 * var(--s))}
 .status{display:flex;gap:calc(10 * var(--s));flex-wrap:wrap;margin-top:calc(22 * var(--s))}
 .status span{font-size:max(calc(17 * var(--s)),10px);font-weight:600;padding:calc(6 * var(--s)) calc(14 * var(--s));border-radius:999px;background:#fff;border:1px solid var(--line);display:inline-flex;align-items:center;gap:calc(8 * var(--s))}
 .status span::before{content:"";width:calc(9 * var(--s));height:calc(9 * var(--s));border-radius:50%;background:currentColor}
-.st-a{color:#2f9e5b}.st-b{color:var(--b)}.st-m{color:var(--o)}
 
 /* ---------- 8 / 9 updates ---------- */
 .upd{display:grid;grid-template-columns:1fr calc(560 * var(--s));gap:calc(110 * var(--s));align-items:center}
@@ -301,6 +297,86 @@ h2{font-size:calc(78 * var(--s));max-width:calc(1250 * var(--s))}
 }
 .m .ph{display:none}
 @media (max-width:760px),(max-aspect-ratio:4/5){.m .ph{display:block}}
+
+/* ============ SHIFT prototype theme (tokens from shift-hub-marvelus.replit.app) ============ */
+:root{
+  --bg:#f6f4ef; --ink:#161513; --muted:#746d63; --soft:rgba(22,21,19,.45); --line:#e6e1d8;
+  --card:#ffffff; --surface:#f0eeea; --primary:#1d4ed8;
+  --available:#087443; --booked:#1d4ed8; --maint:#c2410c;
+  --sh-sm:0 4px 12px #1615130f; --sh:0 8px 24px #16151312; --sh-xl:0 24px 48px #1615131a;
+}
+html,body{background:var(--bg);color:var(--ink)}
+body{font-feature-settings:normal}
+h1,h2{font-weight:600;letter-spacing:-.035em;line-height:1.04}
+.g{background:none;-webkit-background-clip:border-box;background-clip:border-box;color:var(--primary);padding:0}
+.eyebrow{font-weight:600;letter-spacing:.1em;color:var(--soft)}
+.eyebrow b{background:none;color:var(--primary);-webkit-background-clip:border-box;background-clip:border-box;font-weight:800;letter-spacing:-.02em;text-transform:none;font-size:1.15em}
+.lead{color:var(--muted);font-weight:400}
+.card{background:#fff;border:1px solid var(--line);box-shadow:none;border-radius:0}
+.num{color:rgba(22,21,19,.4);font-weight:600}
+.brand{color:var(--soft);font-weight:500;letter-spacing:0}
+.chip{border-radius:0;background:#fff;border:1px solid var(--line);font-weight:500;text-transform:uppercase;letter-spacing:.08em;font-size:max(calc(19 * var(--s)),11px)}
+.steps li{font-weight:500;border-color:var(--line)}
+.steps li:first-child{border-color:var(--line)}
+.cost .bar{background:var(--primary);border-radius:0;height:calc(4 * var(--s))}
+.cost h3,.tile h3,.pair h3,.feat h3,.pstep h3,.m h3,.plan h3,.tiers h3,.flowhead h3{font-weight:600}
+.node{border-radius:0;background:var(--surface);border:1px solid var(--line)}
+.flow.before .node p{color:var(--muted)}
+.flow.after .node{background:#fff;border:1px solid var(--line);box-shadow:none}
+.flow.after .node.auto{background:#fff;border:1px solid var(--primary);box-shadow:inset 0 calc(4 * var(--s)) 0 var(--primary)}
+.flow.after .node.auto .who{background:none;color:var(--primary);-webkit-background-clip:border-box;background-clip:border-box}
+.btn{border-radius:0;background:var(--primary);color:#fff;font-weight:600}
+.browser{border-radius:0;box-shadow:var(--sh-xl);border:1px solid var(--line)}
+.browser .bar{background:var(--surface);border-bottom:1px solid var(--line)}
+.browser .bar i{background:var(--line)}
+.phone{background:var(--ink);box-shadow:var(--sh-xl)}
+.proc::before{background:var(--line);opacity:1;height:1px}
+.dot{border-radius:0;background:#fff;border:1px solid var(--line);font-weight:600}
+.pstep.key .dot{background:var(--primary);color:#fff;border:0}
+.pstep .price,.time li,.status span{border-radius:0;background:#fff;border:1px solid var(--line);font-weight:500}
+.status span::before{border-radius:0}
+.st-a{color:var(--available)}.st-b{color:var(--booked)}.st-m{color:var(--maint)}
+.time .big{font-weight:600;letter-spacing:-.04em}
+.time .big.g{color:var(--ink)}
+.tl .track{background:var(--ink);border-radius:0;height:calc(2 * var(--s));top:calc(12 * var(--s));opacity:1}
+.m .pin{border-radius:0;border:calc(5 * var(--s)) solid var(--primary);background:#fff}
+.phase{color:var(--soft);border-color:var(--line)}
+.plan .amt{font-weight:600}
+.tiers td{border-color:var(--line);font-weight:400}
+.tiers td:last-child{font-weight:600}
+.tiers tr.trial td:last-child{background:none;color:var(--primary);-webkit-background-clip:border-box;background-clip:border-box}
+.progress{background:rgba(22,21,19,.08)}
+.progress i{background:var(--primary)}
+.nav button{border-radius:0;background:#fff;border:1px solid var(--line);color:var(--ink)}
+.count b{color:var(--ink)}
+/* dark hero slides, same photo and overlay as the prototype hero */
+.hero{position:absolute;inset:0;background:linear-gradient(90deg,rgba(22,21,19,.72) 0%,rgba(22,21,19,.42) 42%,rgba(22,21,19,.18) 100%),url("assets/img/hero-road.webp") center/cover no-repeat}
+.hero.alt{background:linear-gradient(90deg,rgba(22,21,19,.86) 0%,rgba(22,21,19,.7) 50%,rgba(22,21,19,.5) 100%),url("assets/img/hero-road.webp") center/cover no-repeat}
+.dark{color:#fff}
+.dark .brand{color:rgba(255,255,255,.6)}
+.dark .eyebrow{color:rgba(255,255,255,.6)}
+.dark .lead,.dark .s1 .for{color:rgba(255,255,255,.78)}
+.s1 .for strong{color:#fff;font-weight:600}
+.dark .g{color:#fff}
+.s1 .mark{font-weight:800;letter-spacing:-.06em;color:#fff;margin-left:calc(-8 * var(--s))}
+.s1 .mark .sl{color:rgba(255,255,255,.7)}
+.s1 .tag{font-weight:600;color:#fff}
+.s12 .contact{color:var(--ink)}
+.s12 .contact .row{border-color:var(--line)}
+.s12 .contact .btn{background:var(--primary)}
+.s12 .eyebrow,.s12 h2{color:#fff}
+.s12 .g{color:#fff;opacity:.7}
+.on-dark .count{color:rgba(255,255,255,.6)}.on-dark .count b{color:#fff}
+.on-dark .progress{background:rgba(255,255,255,.15)}
+@media (max-width:760px),(max-aspect-ratio:4/5){
+  .card,.cost,.tile,.pair .card,.time,.plan,.tiers,.contact,.node,.browser{border-radius:0}
+  .cost .bar{width:3px;height:auto}
+  .tl .track{left:11px;right:auto;top:8px;bottom:8px;width:2px;height:auto}
+  .m .pin{width:24px;height:24px;border-width:4px}
+  .hero{background:linear-gradient(180deg,rgba(22,21,19,.35) 0%,rgba(22,21,19,.55) 45%,rgba(22,21,19,.8) 100%),url("assets/img/hero-road.webp") 40% center/cover no-repeat}
+  .hero.alt{background:linear-gradient(180deg,rgba(22,21,19,.75) 0%,rgba(22,21,19,.82) 100%),url("assets/img/hero-road.webp") 40% center/cover no-repeat}
+}
+
 </style>
 </head>
 <body>
@@ -309,26 +385,18 @@ h2{font-size:calc(78 * var(--s));max-width:calc(1250 * var(--s))}
 <div class="frame">
 
 <!-- 1 COVER -->
-<section class="slide s1" aria-label="Cover">
-  <div class="washes">
-  <div class="wash o" style="width:calc(1100 * var(--s));height:calc(900 * var(--s));left:calc(-260 * var(--s));top:calc(-320 * var(--s))"></div>
-  <div class="wash v" style="width:calc(1200 * var(--s));height:calc(1000 * var(--s));right:calc(-300 * var(--s));top:calc(140 * var(--s))"></div>
-  <div class="wash b" style="width:calc(900 * var(--s));height:calc(800 * var(--s));left:calc(560 * var(--s));bottom:calc(-520 * var(--s))"></div>
-  </div>
+<section class="slide s1 dark" aria-label="Cover">
+  <div class="hero" aria-hidden="true"></div>
   <div class="inner">
-    <h1 class="mark g">SHIFT</h1>
+    <h1 class="mark"><span class="sl">/</span>SHIFT</h1>
     <p class="for">Prepared for <strong data-cfg="clientName">Your Fleet</strong></p>
     <p class="tag">From spreadsheets and Marketplace to one platform.</p>
   </div>
-  <div class="brand">MarvelUs</div>
+  <div class="brand">by MarvelUs</div>
 </section>
 
 <!-- 2 TODAY -->
 <section class="slide s2" aria-label="Where you are today">
-  <div class="washes">
-  <div class="wash o" style="width:calc(900 * var(--s));height:calc(800 * var(--s));left:calc(-380 * var(--s));bottom:calc(-380 * var(--s))"></div>
-  <div class="wash v" style="width:calc(800 * var(--s));height:calc(700 * var(--s));right:calc(-360 * var(--s));top:calc(-300 * var(--s));opacity:.35"></div>
-  </div>
   <div class="inner"><div class="grid">
     <div>
       <p class="eyebrow">Where you are today</p>
@@ -345,15 +413,11 @@ h2{font-size:calc(78 * var(--s));max-width:calc(1250 * var(--s))}
       <li><span class="num">07</span>Coordinate pickup</li>
     </ol>
   </div></div>
-  <div class="brand">MarvelUs</div>
+  <div class="brand">by MarvelUs</div>
 </section>
 
 <!-- 3 COST -->
 <section class="slide s3" aria-label="What it costs you">
-  <div class="washes">
-  <div class="wash v" style="width:calc(1000 * var(--s));height:calc(800 * var(--s));right:calc(-300 * var(--s));top:calc(-380 * var(--s))"></div>
-  <div class="wash o" style="width:calc(800 * var(--s));height:calc(700 * var(--s));left:calc(-340 * var(--s));top:calc(420 * var(--s));opacity:.4"></div>
-  </div>
   <div class="inner">
     <p class="eyebrow">What it costs you</p>
     <h2>Every manual step is a place <span class="g">where things slip.</span></h2>
@@ -365,17 +429,13 @@ h2{font-size:calc(78 * var(--s));max-width:calc(1250 * var(--s))}
       <div class="cost card"><span class="bar"></span><h3>Slipped maintenance</h3><p>Service tasks live in a workbook or in memory.</p></div>
     </div>
   </div>
-  <div class="brand">MarvelUs</div>
+  <div class="brand">by MarvelUs</div>
 </section>
 
 <!-- 4 IDEA -->
 <section class="slide s4" aria-label="The SHIFT idea">
-  <div class="washes">
-  <div class="wash b" style="width:calc(1000 * var(--s));height:calc(800 * var(--s));right:calc(-360 * var(--s));bottom:calc(-420 * var(--s))"></div>
-  <div class="wash o" style="width:calc(800 * var(--s));height:calc(700 * var(--s));left:calc(-380 * var(--s));top:calc(-360 * var(--s));opacity:.4"></div>
-  </div>
   <div class="inner">
-    <p class="eyebrow">The <b>SHIFT</b> idea</p>
+    <p class="eyebrow">The <b>/SHIFT</b> idea</p>
     <h2>Move the repeatable steps <span class="g">into the product.</span></h2>
     <div class="flows">
       <div>
@@ -402,15 +462,11 @@ h2{font-size:calc(78 * var(--s));max-width:calc(1250 * var(--s))}
       </div>
     </div>
   </div>
-  <div class="brand">MarvelUs</div>
+  <div class="brand">by MarvelUs</div>
 </section>
 
 <!-- 5 PRODUCT -->
 <section class="slide s5" aria-label="What you get">
-  <div class="washes">
-  <div class="wash v" style="width:calc(1100 * var(--s));height:calc(900 * var(--s));right:calc(-200 * var(--s));top:calc(-260 * var(--s));opacity:.45"></div>
-  <div class="wash o" style="width:calc(800 * var(--s));height:calc(700 * var(--s));left:calc(-360 * var(--s));bottom:calc(-380 * var(--s));opacity:.4"></div>
-  </div>
   <div class="inner"><div class="grid">
     <div>
       <p class="eyebrow">What you get</p>
@@ -428,15 +484,11 @@ h2{font-size:calc(78 * var(--s));max-width:calc(1250 * var(--s))}
       <p class="caption">Renter storefront, live prototype</p>
     </div>
   </div></div>
-  <div class="brand">MarvelUs</div>
+  <div class="brand">by MarvelUs</div>
 </section>
 
 <!-- 6 PROCESS -->
 <section class="slide s6" aria-label="How we work together">
-  <div class="washes">
-  <div class="wash o" style="width:calc(1000 * var(--s));height:calc(800 * var(--s));left:calc(-300 * var(--s));top:calc(-420 * var(--s));opacity:.45"></div>
-  <div class="wash b" style="width:calc(1000 * var(--s));height:calc(800 * var(--s));right:calc(-360 * var(--s));bottom:calc(-440 * var(--s))"></div>
-  </div>
   <div class="inner">
     <p class="eyebrow">How we work together</p>
     <h2>Six steps from first call <span class="g">to live software.</span></h2>
@@ -449,15 +501,11 @@ h2{font-size:calc(78 * var(--s));max-width:calc(1250 * var(--s))}
       <div class="pstep"><div class="dot">6</div><h3>Monthly plan begins</h3><p>Billing starts once the MVP is ready.</p></div>
     </div>
   </div>
-  <div class="brand">MarvelUs</div>
+  <div class="brand">by MarvelUs</div>
 </section>
 
 <!-- 7 MVP -->
 <section class="slide s7" aria-label="MVP">
-  <div class="washes">
-  <div class="wash v" style="width:calc(1000 * var(--s));height:calc(900 * var(--s));right:calc(-200 * var(--s));top:calc(-300 * var(--s));opacity:.45"></div>
-  <div class="wash o" style="width:calc(800 * var(--s));height:calc(700 * var(--s));left:calc(-380 * var(--s));bottom:calc(-360 * var(--s));opacity:.35"></div>
-  </div>
   <div class="inner"><div class="grid">
     <div>
       <p class="eyebrow"><b>MVP</b></p>
@@ -471,15 +519,11 @@ h2{font-size:calc(78 * var(--s));max-width:calc(1250 * var(--s))}
       <div class="tile card"><h3>Revenue</h3><p>What the fleet is earning, without an Excel export.</p></div>
     </div>
   </div></div>
-  <div class="brand">MarvelUs</div>
+  <div class="brand">by MarvelUs</div>
 </section>
 
 <!-- 8 V1 -->
 <section class="slide s8" aria-label="v1 update">
-  <div class="washes">
-  <div class="wash o" style="width:calc(1000 * var(--s));height:calc(900 * var(--s));right:calc(-240 * var(--s));top:calc(-200 * var(--s));opacity:.5"></div>
-  <div class="wash b" style="width:calc(800 * var(--s));height:calc(700 * var(--s));left:calc(-380 * var(--s));bottom:calc(-420 * var(--s));opacity:.4"></div>
-  </div>
   <div class="inner"><div class="upd">
     <div>
       <p class="eyebrow">Update <b>v1</b></p>
@@ -495,15 +539,11 @@ h2{font-size:calc(78 * var(--s));max-width:calc(1250 * var(--s))}
       <ul><li>Design</li><li>Dev</li><li>Test</li></ul>
     </div>
   </div></div>
-  <div class="brand">MarvelUs</div>
+  <div class="brand">by MarvelUs</div>
 </section>
 
 <!-- 9 V2 -->
 <section class="slide s9" aria-label="v2 update">
-  <div class="washes">
-  <div class="wash b" style="width:calc(1000 * var(--s));height:calc(900 * var(--s));right:calc(-240 * var(--s));top:calc(-240 * var(--s));opacity:.55"></div>
-  <div class="wash v" style="width:calc(800 * var(--s));height:calc(700 * var(--s));left:calc(-360 * var(--s));bottom:calc(-400 * var(--s));opacity:.4"></div>
-  </div>
   <div class="inner"><div class="upd">
     <div>
       <p class="eyebrow">Update <b>v2</b></p>
@@ -516,15 +556,11 @@ h2{font-size:calc(78 * var(--s));max-width:calc(1250 * var(--s))}
       <ul><li>Design</li><li>Dev</li><li>Test</li></ul>
     </div>
   </div></div>
-  <div class="brand">MarvelUs</div>
+  <div class="brand">by MarvelUs</div>
 </section>
 
 <!-- 10 TIMELINE -->
 <section class="slide s10" aria-label="Timeline">
-  <div class="washes">
-  <div class="wash o" style="width:calc(900 * var(--s));height:calc(800 * var(--s));left:calc(-300 * var(--s));top:calc(-380 * var(--s));opacity:.4"></div>
-  <div class="wash v" style="width:calc(1000 * var(--s));height:calc(800 * var(--s));right:calc(-320 * var(--s));bottom:calc(-420 * var(--s));opacity:.45"></div>
-  </div>
   <div class="inner">
     <p class="eyebrow">Timeline</p>
     <h2>From intro to <span class="g">v2.</span></h2>
@@ -541,15 +577,11 @@ h2{font-size:calc(78 * var(--s));max-width:calc(1250 * var(--s))}
       </div>
     </div>
   </div>
-  <div class="brand">MarvelUs</div>
+  <div class="brand">by MarvelUs</div>
 </section>
 
 <!-- 11 PRICING -->
 <section class="slide s11" aria-label="Pricing">
-  <div class="washes">
-  <div class="wash v" style="width:calc(1000 * var(--s));height:calc(800 * var(--s));right:calc(-300 * var(--s));top:calc(-380 * var(--s));opacity:.45"></div>
-  <div class="wash o" style="width:calc(900 * var(--s));height:calc(800 * var(--s));left:calc(-380 * var(--s));bottom:calc(-420 * var(--s));opacity:.4"></div>
-  </div>
   <div class="inner">
     <p class="eyebrow">Pricing</p>
     <h2>Simple, and it <span class="g">grows with your fleet.</span></h2>
@@ -573,16 +605,12 @@ h2{font-size:calc(78 * var(--s));max-width:calc(1250 * var(--s))}
     </div>
     <p class="fine"><b>Prices in AUD.</b> Monthly payments start once the MVP is ready.</p>
   </div>
-  <div class="brand">MarvelUs</div>
+  <div class="brand">by MarvelUs</div>
 </section>
 
 <!-- 12 NEXT -->
-<section class="slide s12" aria-label="Next step">
-  <div class="washes">
-  <div class="wash o" style="width:calc(1000 * var(--s));height:calc(900 * var(--s));left:calc(-300 * var(--s));top:calc(-300 * var(--s));opacity:.45"></div>
-  <div class="wash v" style="width:calc(1000 * var(--s));height:calc(900 * var(--s));right:calc(-300 * var(--s));bottom:calc(-400 * var(--s));opacity:.45"></div>
-  <div class="wash b" style="width:calc(700 * var(--s));height:calc(600 * var(--s));right:calc(400 * var(--s));top:calc(-420 * var(--s));opacity:.35"></div>
-  </div>
+<section class="slide s12 dark" aria-label="Next step">
+  <div class="hero alt" aria-hidden="true"></div>
   <div class="inner"><div class="grid">
     <div>
       <p class="eyebrow">Next step</p>
@@ -596,7 +624,7 @@ h2{font-size:calc(78 * var(--s));max-width:calc(1250 * var(--s))}
       <a class="btn" data-cfg-href="bookingLink" href="#" target="_blank" rel="noopener">Book the discovery call <span class="arr">&rarr;</span></a>
     </div>
   </div></div>
-  <div class="brand">MarvelUs</div>
+  <div class="brand">by MarvelUs</div>
 </section>
 
 </div>
@@ -635,7 +663,7 @@ h2{font-size:calc(78 * var(--s));max-width:calc(1250 * var(--s))}
     n = Math.min(Math.max(n,0),N-1); if (n === i) return; i = n;
     slides.forEach((s,k)=>{ s.classList.toggle('active',k===n); s.classList.toggle('before',k<n); s.setAttribute('aria-hidden',k!==n); s.inert = k!==n; if(k===n) s.scrollTop = 0; });
     bar.style.width = ((n+1)/N*100) + '%';
-    cur.textContent = n+1; prev.disabled = n===0; next.disabled = n===N-1;
+    cur.textContent = n+1; document.body.classList.toggle('on-dark', slides[n].classList.contains('dark')); prev.disabled = n===0; next.disabled = n===N-1;
     if (location.hash !== '#'+(n+1)) history.replaceState(null,'','#'+(n+1));
   }
   const fwd = ()=>go(i+1), back = ()=>go(i-1);
