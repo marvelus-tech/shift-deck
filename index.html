@@ -92,9 +92,9 @@ const SLIDES = [
   { type: "parts", chapter: "Solution",
     title: "One platform, *three parts.*",
     parts: [
-      { tag: "Part 1", name: "Storefront",               text: "Your own website: public inventory and lead capture." },
-      { tag: "Part 2", name: "Renter management",        text: "Renter accounts and profiles in one place." },
-      { tag: "Part 3", name: "Owner operations system",  text: "Where you run vehicles, renters, bookings and contracts.", core: "Core" }
+      { name: "Storefront",               text: "Your own website: public inventory and lead capture." },
+      { name: "Renter management",        text: "Renter accounts and profiles in one place." },
+      { name: "Owner operations system",  text: "Where you run vehicles, renters, bookings and contracts.", core: "Core" }
     ],
     button: "View live prototype",
     caption: "Storefront, live prototype" },
@@ -259,7 +259,7 @@ h3{font-weight:600;letter-spacing:-.015em}
 .parts{margin-top:calc(44 * var(--s))}
 .part{padding:calc(24 * var(--s)) 0 calc(26 * var(--s));border-top:1px solid var(--line)}
 .part:last-child{border-bottom:1px solid var(--line)}
-.part h3{font-size:max(calc(32 * var(--s)),16px);display:flex;align-items:center;gap:calc(14 * var(--s));margin-top:calc(6 * var(--s))}
+.part h3{font-size:max(calc(32 * var(--s)),16px);display:flex;align-items:center;gap:calc(14 * var(--s))}
 .part .core{font-size:max(calc(15 * var(--s)),10px);font-weight:700;letter-spacing:.1em;text-transform:uppercase;background:var(--primary);color:#fff;padding:calc(5 * var(--s)) calc(10 * var(--s))}
 .part p{font-size:max(calc(23 * var(--s)),13px);color:var(--muted);margin-top:calc(6 * var(--s));line-height:1.4}
 .shots{position:relative;height:calc(700 * var(--s))}
@@ -528,7 +528,7 @@ h3{font-weight:600;letter-spacing:-.015em}
     twoProblems: s => `${head(s)}<div class="two">${s.cards.map(c=>`<div class="pc card"><p class="n">${t(c.n)}</p><h3>${t(c.name)}</h3><p>${t(c.text)}</p><div class="chips">${(c.chips||[]).map(x=>`<span class="chip">${t(x)}</span>`).join('')}</div></div>`).join('')}</div>`,
     points: s => `<div class="split"><div>${head(s)}</div><ul class="pts">${s.points.map(p=>`<li><h3>${t(p.title)}</h3><p>${t(p.text)}</p></li>`).join('')}</ul></div>`,
     compare: s => `<div class="split"><div>${head(s)}</div><div class="cmp">${[s.before,s.after].map((c,k)=>`<div class="c${k?' on':''}"><p class="lbl">${t(c.label)}</p><p class="big">${t(c.big)}</p><p>${t(c.text)}</p></div>`).join('')}</div></div>`,
-    parts: s => `<div class="split"><div>${head(s)}<div class="parts">${s.parts.map(p=>`<div class="part"><p class="lbl">${t(p.tag)}</p><h3>${t(p.name)}${p.core?`<span class="core">${t(p.core)}</span>`:''}</h3><p>${t(p.text)}</p></div>`).join('')}</div><a class="btn" data-href="prototypeUrl" target="_blank" rel="noopener">${t(s.button)} <span class="arr">&rarr;</span></a></div><div class="shots"><div class="browser"><div class="bar"><i></i><i></i><i></i></div><img src="assets/img/proto-desktop.jpg" alt="SHIFT storefront on desktop, live prototype"></div><div class="phone"><img src="assets/img/proto-mobile.jpg" alt="SHIFT storefront on a phone, live prototype"></div><p class="caption">${t(s.caption)}</p></div></div>`,
+    parts: s => `<div class="split"><div>${head(s)}<div class="parts">${s.parts.map(p=>`<div class="part">${p.tag?`<p class="lbl">${t(p.tag)}</p>`:''}<h3>${t(p.name)}${p.core?`<span class="core">${t(p.core)}</span>`:''}</h3><p>${t(p.text)}</p></div>`).join('')}</div><a class="btn" data-href="prototypeUrl" target="_blank" rel="noopener">${t(s.button)} <span class="arr">&rarr;</span></a></div><div class="shots"><div class="browser"><div class="bar"><i></i><i></i><i></i></div><img src="assets/img/proto-desktop.jpg" alt="SHIFT storefront on desktop, live prototype"></div><div class="phone"><img src="assets/img/proto-mobile.jpg" alt="SHIFT storefront on a phone, live prototype"></div><p class="caption">${t(s.caption)}</p></div></div>`,
     pricing: s => `${head(s)}<div class="price-grid"><div class="plans">${s.plans.map((p,k)=>`<div class="plan card"><span class="num">${k+1}</span><div><h3>${t(p.name)}</h3><p>${t(p.note)}</p></div><div class="amt">${hasWas(p)&&CONFIG.dealLabel?`<span class="deal">${t(CONFIG.dealLabel)}</span>`:''}<span class="now">${hasWas(p)?`<s class="was" aria-label="Standard price">${t(p.was)}${p.unit?t(p.unit):''}</s>`:''}${t(p.amount)}${p.unit?`<small>${t(p.unit)}</small>`:''}</span></div></div>`).join('')}</div><div class="tiers card"><p class="lbl">${t(s.tiersLabel)}</p><h3>${t(s.tiersTitle)}</h3><table>${CONFIG.fleetTiers.map(r=>`<tr><td>${t(r[0])}${r[2]?`<small class="tnote">${t(r[2])}</small>`:''}</td><td>${t(r[1])}</td></tr>`).join('')}</table></div></div><p class="hl">${t(s.highlight)}</p><p class="fine">${t(s.fine)}</p>`,
     modules: s => `${head(s)}<div class="mods">${s.modules.map(m=>`<div class="mod card${m.top?' top':''}">${m.tag?`<p class="lbl">${t(m.tag)}</p>`:''}<h3>${t(m.name)}</h3><p>${t(m.text)}</p>${m.status?`<div class="status">${m.status.map((x,k)=>`<span class="st-${k}">${t(x)}</span>`).join('')}</div>`:''}</div>`).join('')}</div>`,
     diagram: s => { const b=(o,c)=>`<div class="box ${c}"><h3>${t(o.name)}</h3><p>${t(o.text)}</p></div>`;
