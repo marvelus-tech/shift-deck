@@ -7,6 +7,7 @@ Everything you need to change is at the top of `index.html`, in two blocks. You 
 - `contactName`, `contactEmail`, `contactPhone`, `bookingLink`: shown on the last slide. Placeholders in square brackets, like `[contact email]`, stay as plain text and their links do nothing until you replace them.
 - `prototypeUrl`: the "View live prototype" button.
 - Prices: `introPrice`, `introLength`, `retainerPrice`, `monthlyBase`, `monthlyUnit`, `monthlyNote`, `currency`, and the `fleetTiers` list (each row is `["label", "price"]`).
+- Standard prices: `retainerStandard` and `monthlyStandard` appear struck through beside the current price. Set either to `""` to hide its strikethrough. `dealLabel` (default "Launch pricing") is the small tag above any discounted price; set it to `""` to hide it.
 
 ## 2. SLIDES: all slide text
 - One `{ ... }` block per slide, in order. Change the words inside the quotes.
