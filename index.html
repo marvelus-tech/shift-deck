@@ -39,11 +39,12 @@ const CONFIG = {
   monthlyUnit:    "/month",
   monthlyNote:    "Base, no active cars",
   fleetTiers: [
-    ["First month trial", "5 cars free"],
-    ["0 to 10 cars",      "+$25/month"],
-    ["10 to 30 cars",     "+$50/month"],
-    ["30 to 60 cars",     "+$100/month"],
-    ["60 to 100 cars",    "+$200/month"]
+    // ["cars", "price", "optional small note"]
+    ["1 to 5 cars",    "Free", "First month trial"],
+    ["6 to 10 cars",   "+$25/month"],
+    ["11 to 30 cars",  "+$50/month"],
+    ["31 to 60 cars",  "+$100/month"],
+    ["61 to 100 cars", "+$200/month"]
   ]
 };
 
@@ -289,6 +290,7 @@ h3{font-weight:600;letter-spacing:-.015em}
 .tiers td{font-size:max(calc(24 * var(--s)),13px);padding:calc(14 * var(--s)) 0;border-top:1px solid var(--line)}
 .tiers td:last-child{text-align:right;font-weight:600;font-variant-numeric:tabular-nums}
 .tiers tr:first-child td:last-child{color:var(--primary)}
+.tiers .tnote{display:inline-block;margin-left:calc(12 * var(--s));font-size:max(calc(15 * var(--s)),9.5px);font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--soft);vertical-align:middle}
 .hl{margin-top:calc(28 * var(--s));display:flex;align-items:center;gap:calc(16 * var(--s));font-size:max(calc(25 * var(--s)),14px);font-weight:600}
 .hl::before{content:"";width:calc(12 * var(--s));height:calc(12 * var(--s));background:var(--primary);flex:none}
 .fine{font-size:max(calc(21 * var(--s)),12px);color:var(--muted);margin-top:calc(10 * var(--s))}
@@ -527,7 +529,7 @@ h3{font-weight:600;letter-spacing:-.015em}
     points: s => `<div class="split"><div>${head(s)}</div><ul class="pts">${s.points.map(p=>`<li><h3>${t(p.title)}</h3><p>${t(p.text)}</p></li>`).join('')}</ul></div>`,
     compare: s => `<div class="split"><div>${head(s)}</div><div class="cmp">${[s.before,s.after].map((c,k)=>`<div class="c${k?' on':''}"><p class="lbl">${t(c.label)}</p><p class="big">${t(c.big)}</p><p>${t(c.text)}</p></div>`).join('')}</div></div>`,
     parts: s => `<div class="split"><div>${head(s)}<div class="parts">${s.parts.map(p=>`<div class="part"><p class="lbl">${t(p.tag)}</p><h3>${t(p.name)}${p.core?`<span class="core">${t(p.core)}</span>`:''}</h3><p>${t(p.text)}</p></div>`).join('')}</div><a class="btn" data-href="prototypeUrl" target="_blank" rel="noopener">${t(s.button)} <span class="arr">&rarr;</span></a></div><div class="shots"><div class="browser"><div class="bar"><i></i><i></i><i></i></div><img src="assets/img/proto-desktop.jpg" alt="SHIFT storefront on desktop, live prototype"></div><div class="phone"><img src="assets/img/proto-mobile.jpg" alt="SHIFT storefront on a phone, live prototype"></div><p class="caption">${t(s.caption)}</p></div></div>`,
-    pricing: s => `${head(s)}<div class="price-grid"><div class="plans">${s.plans.map((p,k)=>`<div class="plan card"><span class="num">${k+1}</span><div><h3>${t(p.name)}</h3><p>${t(p.note)}</p></div><div class="amt">${hasWas(p)&&CONFIG.dealLabel?`<span class="deal">${t(CONFIG.dealLabel)}</span>`:''}<span class="now">${hasWas(p)?`<s class="was" aria-label="Standard price">${t(p.was)}${p.unit?t(p.unit):''}</s>`:''}${t(p.amount)}${p.unit?`<small>${t(p.unit)}</small>`:''}</span></div></div>`).join('')}</div><div class="tiers card"><p class="lbl">${t(s.tiersLabel)}</p><h3>${t(s.tiersTitle)}</h3><table>${CONFIG.fleetTiers.map(r=>`<tr><td>${t(r[0])}</td><td>${t(r[1])}</td></tr>`).join('')}</table></div></div><p class="hl">${t(s.highlight)}</p><p class="fine">${t(s.fine)}</p>`,
+    pricing: s => `${head(s)}<div class="price-grid"><div class="plans">${s.plans.map((p,k)=>`<div class="plan card"><span class="num">${k+1}</span><div><h3>${t(p.name)}</h3><p>${t(p.note)}</p></div><div class="amt">${hasWas(p)&&CONFIG.dealLabel?`<span class="deal">${t(CONFIG.dealLabel)}</span>`:''}<span class="now">${hasWas(p)?`<s class="was" aria-label="Standard price">${t(p.was)}${p.unit?t(p.unit):''}</s>`:''}${t(p.amount)}${p.unit?`<small>${t(p.unit)}</small>`:''}</span></div></div>`).join('')}</div><div class="tiers card"><p class="lbl">${t(s.tiersLabel)}</p><h3>${t(s.tiersTitle)}</h3><table>${CONFIG.fleetTiers.map(r=>`<tr><td>${t(r[0])}${r[2]?`<small class="tnote">${t(r[2])}</small>`:''}</td><td>${t(r[1])}</td></tr>`).join('')}</table></div></div><p class="hl">${t(s.highlight)}</p><p class="fine">${t(s.fine)}</p>`,
     modules: s => `${head(s)}<div class="mods">${s.modules.map(m=>`<div class="mod card${m.top?' top':''}">${m.tag?`<p class="lbl">${t(m.tag)}</p>`:''}<h3>${t(m.name)}</h3><p>${t(m.text)}</p>${m.status?`<div class="status">${m.status.map((x,k)=>`<span class="st-${k}">${t(x)}</span>`).join('')}</div>`:''}</div>`).join('')}</div>`,
     diagram: s => { const b=(o,c)=>`<div class="box ${c}"><h3>${t(o.name)}</h3><p>${t(o.text)}</p></div>`;
       return `${head(s)}<div class="dia">${b(s.top,'top')}<div class="bus"><span></span><span></span><span></span><span></span><span></span></div><div class="row">${b(s.left,'')}<div class="link"></div>${b(s.middle,'mid')}<div class="link"></div>${b(s.right,'')}</div></div>`; },
