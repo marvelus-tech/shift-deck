@@ -95,19 +95,6 @@ const SLIDES = [
     button: "View live prototype",
     caption: "Storefront, live prototype" },
 
-  /* ---------- PRICING ---------- */
-  { type: "pricing", chapter: "Pricing and commitment",
-    title: "Simple pricing that *grows with your fleet.*",
-    plans: [
-      { name: "Intro",              note: "{introLength}",  amount: "{introPrice}" },
-      { name: "Discovery retainer", note: "Before Release 1", amount: "{retainerPrice}", was: "{retainerStandard}" },
-      { name: "Monthly",            note: "{monthlyNote}",  amount: "{monthlyBase}", unit: "{monthlyUnit}", was: "{monthlyStandard}" }
-    ],
-    tiersLabel: "Plus one fleet tier",
-    tiersTitle: "Based on your fleet size",
-    highlight: "The monthly fee stays the same through Releases 1 to 3.",
-    fine: "Prices in {currency}. Monthly payments start at Release 1." },
-
   /* ---------- HOW IT WORKS ---------- */
   { type: "modules", chapter: "How it works", sub: "Owner operations system",
     title: "Four modules, *one console.*",
@@ -129,6 +116,19 @@ const SLIDES = [
     left:   { name: "Vehicle management",     text: "Status, availability, maintenance" },
     middle: { name: "Bookings and contracts", text: "Links vehicles and renters" },
     right:  { name: "Renter management",      text: "Accounts and profiles" } },
+
+  /* ---------- PRICING ---------- */
+  { type: "pricing", chapter: "Pricing and commitment",
+    title: "Simple pricing that *grows with your fleet.*",
+    plans: [
+      { name: "Intro",              note: "{introLength}",  amount: "{introPrice}" },
+      { name: "Discovery retainer", note: "Before Release 1", amount: "{retainerPrice}", was: "{retainerStandard}" },
+      { name: "Monthly",            note: "{monthlyNote}",  amount: "{monthlyBase}", unit: "{monthlyUnit}", was: "{monthlyStandard}" }
+    ],
+    tiersLabel: "Plus one fleet tier",
+    tiersTitle: "Based on your fleet size",
+    highlight: "The monthly fee stays the same through Releases 1 to 3.",
+    fine: "Prices in {currency}. Monthly payments start at Release 1." },
 
   { type: "steps", chapter: "How it works", sub: "Getting you running",
     title: "We set up the console *with you.*",
