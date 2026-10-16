@@ -89,26 +89,17 @@ const SLIDES = [
     caption: "Storefront, live prototype" },
 
   /* ---------- HOW IT WORKS ---------- */
-  { type: "modules", chapter: "How it works", sub: "Owner operations system",
-    title: "Four modules, *one console.*",
-    modules: [
-      { name: "Operational management", text: "The overview of your whole operation.", tag: "Dashboard layer", top: true,
-        solves: ["Stitching sheets together each morning"] },
-      { name: "Vehicle management",     text: "Every vehicle, its status and its maintenance.", status: ["Available", "Booked", "Maintenance"],
-        solves: ["Missed maintenance", "Not knowing which cars are idle or live", "Cars tracked in Excel"] },
-      { name: "Renter management",      text: "Renter accounts and profiles.",
-        solves: ["Long, intimidating onboarding", "Manual ID checks", "Renter details scattered across channels"] },
-      { name: "Bookings and contracts", text: "Links a vehicle to a renter for each hire.",
-        solves: ["Double bookings and after hours errors", "Contracts in Word", "Back and forth on every hire"] }
-    ],
-    solvesLabel: "Solves" },
-
   { type: "diagram", chapter: "How it works", sub: "Owner operations system",
-    title: "How the modules *fit together.*",
-    top:    { name: "Operational management", text: "Sees everything below" },
-    left:   { name: "Vehicle management",     text: "Status, availability, maintenance" },
-    middle: { name: "Bookings and contracts", text: "Links vehicles and renters" },
-    right:  { name: "Renter management",      text: "Accounts and profiles" } },
+    title: "Four modules, *one console.*",
+    solvesLabel: "Solves",
+    top:    { name: "Operational management", text: "The overview of everything below",
+              solves: ["Stitching sheets together each morning"] },
+    left:   { name: "Vehicle management",     text: "Status, availability, maintenance",
+              solves: ["Missed maintenance", "Not knowing which cars are idle or live", "Cars tracked in Excel"] },
+    middle: { name: "Bookings and contracts", text: "Links a vehicle to a renter for each hire",
+              solves: ["Double bookings and after hours errors", "Contracts in Word", "Back and forth on every hire"] },
+    right:  { name: "Renter management",      text: "Renter accounts and profiles",
+              solves: ["Long, intimidating onboarding", "Manual ID checks", "Renter details scattered across channels"] } },
 
   /* ---------- PRICING ---------- */
   { type: "pricing", chapter: "Pricing and commitment",
@@ -144,14 +135,6 @@ const SLIDES = [
       { tag: "Final",     name: "The full package",      text: "Everything working together, with smoother integration." }
     ],
     note: "Your monthly fee stays the same through Releases 1 to 3." },
-
-  { type: "roadmap", chapter: "Roadmap", sub: "Future",
-    title: "Later, on *the roadmap.*",
-    lead: "Not part of Releases 1 to 3. Built once your operation runs on SHIFT every day.",
-    items: [
-      { name: "Renter assistant", text: "Answers renter questions after hours on the active booking, and hands incidents to you." },
-      { name: "Owner copilot",   text: "Ask about your vehicles, bookings and availability in plain language." }
-    ] },
 
   /* ---------- BENEFITS ---------- */
   { type: "benefits", chapter: "Benefits",
@@ -338,6 +321,19 @@ h3{font-weight:600;letter-spacing:-.015em}
 .dia .row{align-items:center}
 .dia .link{height:2px;background:var(--primary)}
 
+.dia{margin-top:calc(46 * var(--s))}
+.dia .row{align-items:stretch}
+.dia .row .link{align-self:center}
+.dia .row .box{text-align:left;padding:calc(28 * var(--s)) calc(30 * var(--s)) calc(30 * var(--s))}
+.dia .box .solves{margin-top:calc(18 * var(--s));padding-top:calc(14 * var(--s));border-top:1px solid var(--line)}
+.dia .box .solves ul{gap:calc(6 * var(--s));margin-top:calc(8 * var(--s))}
+.dia .box .solves li{font-size:max(calc(20 * var(--s)),11px)}
+.dia .box.top{width:calc(980 * var(--s));padding:calc(24 * var(--s)) calc(34 * var(--s))}
+.dia .box.top .solves{border-top-color:rgba(255,255,255,.18);display:flex;justify-content:center;align-items:baseline;gap:calc(14 * var(--s));margin-top:calc(14 * var(--s));padding-top:calc(12 * var(--s))}
+.dia .box.top .solves .lbl{color:rgba(255,255,255,.55)}
+.dia .box.top .solves ul{margin:0}
+.dia .box.top .solves li{color:#fff}
+.dia .bus{height:calc(56 * var(--s))}
 /* steps */
 .proc{display:grid;grid-template-columns:repeat(6,1fr);gap:calc(18 * var(--s));margin-top:calc(76 * var(--s));position:relative}
 .proc::before{content:"";position:absolute;left:calc(30 * var(--s));right:calc(30 * var(--s));top:calc(29 * var(--s));height:1px;background:var(--line)}
@@ -414,6 +410,7 @@ h3{font-weight:600;letter-spacing:-.015em}
   .parts{margin-top:10px}.part{padding:5px 0 6px}.part p{margin-top:1px}
   .btn{margin-top:12px;padding:8px 14px;font-size:12px}
   .t-parts .inner{padding-top:18px;padding-bottom:10px}
+  .t-diagram .inner{padding-top:14px;padding-bottom:6px}.t-diagram .eyebrow{margin-bottom:4px}.t-diagram h2{font-size:21px}.dia{margin-top:10px}.dia .bus{height:14px}.dia .row .box,.dia .box.top{padding:7px 10px 8px}.dia .box p{font-size:10px}.dia .box h3{font-size:12px}.dia .box .solves{margin-top:4px;padding-top:4px}.dia .box .solves ul{margin-top:3px;gap:1px}.dia .box .solves li{font-size:9.5px;padding-left:9px}.dia .box .solves li::before{width:5px;height:5px}.dia .box.top .solves{margin-top:3px;padding-top:3px}
   .p3{margin-top:18px;gap:22px}.p3 .col{padding-top:10px}.p3 h3{font-size:17px;margin-top:2px}.p3 ul{margin-top:6px}.p3 li{font-size:11px;padding:5px 0}.p3 .n{font-size:9.5px}
   .solves li,.solves{font-size:10.5px}.solves{margin-top:6px;padding-top:5px;line-height:1.4}.mod.top{display:block}.mod.top .solves{display:block;margin-top:4px}.mod.top p{margin-top:2px}
   .t-modules .inner{padding-top:16px;padding-bottom:8px}.t-modules .eyebrow{margin-bottom:6px}.mod.top > .lbl{display:none}.t-modules .status{display:none}.t-modules h2{font-size:22px}
@@ -488,6 +485,9 @@ h3{font-weight:600;letter-spacing:-.015em}
   .dia .bus::before{content:"";position:absolute;left:50%;top:0;bottom:0;width:2px;background:var(--wire)}
   .dia .row{grid-template-columns:1fr}
   .dia .link{width:2px;height:16px;margin:0 auto}
+  .dia .row .box{padding:11px 14px 12px}.dia .box .solves{margin-top:6px;padding-top:6px;font-size:12.5px;line-height:1.4;display:block !important}.dia .box .solves li{font-size:12.5px}
+  .dia .box.top{padding:11px 14px 12px;text-align:left}
+  .dia .box .solves .lbl{display:inline;margin-right:6px}.dia .box .solves ul{display:inline;margin:0}.dia .box .solves li{display:inline;padding:0}.dia .box .solves li::before{display:none}.dia .box .solves li:not(:last-child)::after{content:"  \00B7  ";white-space:pre;color:var(--soft)}
   .proc{grid-template-columns:1fr;gap:11px;margin-top:22px}
   .proc::before{left:17px;right:auto;top:18px;bottom:18px;width:1px;height:auto}
   .pstep{display:grid;grid-template-columns:36px 1fr;column-gap:14px;align-items:start}
@@ -552,11 +552,10 @@ h3{font-weight:600;letter-spacing:-.015em}
     parts: s => `<div class="split"><div>${head(s)}<div class="parts">${s.parts.map(p=>`<div class="part">${p.tag?`<p class="lbl">${t(p.tag)}</p>`:''}<h3>${t(p.name)}${p.core?`<span class="core">${t(p.core)}</span>`:''}</h3><p>${t(p.text)}</p></div>`).join('')}</div><a class="btn" data-href="prototypeUrl" target="_blank" rel="noopener">${t(s.button)} <span class="arr">&rarr;</span></a></div><div class="shots"><div class="browser"><div class="bar"><i></i><i></i><i></i></div><img src="assets/img/proto-desktop.jpg" alt="SHIFT storefront on desktop, live prototype"></div><div class="phone"><img src="assets/img/proto-mobile.jpg" alt="SHIFT storefront on a phone, live prototype"></div><p class="caption">${t(s.caption)}</p></div></div>`,
     pricing: s => `${head(s)}<div class="price-grid"><div class="plans">${s.plans.map((p,k)=>`<div class="plan card"><span class="num">${k+1}</span><div><h3>${t(p.name)}</h3><p>${t(p.note)}</p></div><div class="amt">${hasWas(p)&&CONFIG.dealLabel?`<span class="deal">${t(CONFIG.dealLabel)}</span>`:''}<span class="now">${hasWas(p)?`<s class="was" aria-label="Standard price">${t(p.was)}${p.unit?t(p.unit):''}</s>`:''}${t(p.amount)}${p.unit?`<small>${t(p.unit)}</small>`:''}</span></div></div>`).join('')}</div><div class="tiers card"><p class="lbl">${t(s.tiersLabel)}</p><h3>${t(s.tiersTitle)}</h3><table>${CONFIG.fleetTiers.map(r=>`<tr><td>${t(r[0])}${r[2]?`<small class="tnote">${t(r[2])}</small>`:''}</td><td>${t(r[1])}</td></tr>`).join('')}</table></div></div><p class="hl">${t(s.highlight)}</p><p class="fine">${t(s.fine)}</p>`,
     modules: s => `${head(s)}<div class="mods">${s.modules.map(m=>`<div class="mod card${m.top?' top':''}">${m.tag?`<p class="lbl">${t(m.tag)}</p>`:''}<h3>${t(m.name)}</h3><p>${t(m.text)}</p>${m.status?`<div class="status">${m.status.map((x,k)=>`<span class="st-${k}">${t(x)}</span>`).join('')}</div>`:''}${m.solves&&m.solves.length?`<div class="solves"><p class="lbl">${t(s.solvesLabel||'Solves')}</p><ul>${m.solves.map(x=>`<li>${t(x)}</li>`).join('')}</ul></div>`:''}</div>`).join('')}</div>`,
-    diagram: s => { const b=(o,c)=>`<div class="box ${c}"><h3>${t(o.name)}</h3><p>${t(o.text)}</p></div>`;
+    diagram: s => { const b=(o,c)=>`<div class="box ${c}"><h3>${t(o.name)}</h3><p>${t(o.text)}</p>${o.solves&&o.solves.length?`<div class="solves"><p class="lbl">${t(s.solvesLabel||'Solves')}</p><ul>${o.solves.map(x=>`<li>${t(x)}</li>`).join('')}</ul></div>`:''}</div>`;
       return `${head(s)}<div class="dia">${b(s.top,'top')}<div class="bus"><span></span><span></span><span></span><span></span><span></span></div><div class="row">${b(s.left,'')}<div class="link"></div>${b(s.middle,'mid')}<div class="link"></div>${b(s.right,'')}</div></div>`; },
     steps: s => `${head(s)}<div class="proc">${s.steps.map((p,k)=>`<div class="pstep${p.key?' key':''}"><div class="dot">${k+1}</div><h3>${t(p.name)}</h3><p>${t(p.text)}</p>${p.tag?`<span class="price">${t(p.tag)}</span>`:''}</div>`).join('')}</div>`,
     releases: s => `${head(s)}<div class="tl"><div class="ms"><div class="track"></div>${s.releases.map(r=>`<div class="m"><div class="pin"></div><p class="lbl">${t(r.tag)}</p><h3>${t(r.name)}</h3><p>${t(r.text)}</p>${r.when?`<p class="when">${t(r.when)}</p>`:''}</div>`).join('')}</div></div><p class="hl tl-note">${t(s.note)}</p>`,
-    roadmap: s => `${head(s)}<div class="road">${s.items.map(i=>`<div class="r"><p class="lbl">${t(s.sub||'Future')}</p><h3>${t(i.name)}</h3><p>${t(i.text)}</p></div>`).join('')}</div>`,
     benefits: s => `${head(s)}<div class="ben"><div class="r head"><p class="lbl">${t(s.headPain)}</p><span></span><p class="lbl">${t(s.headGain)}</p></div>${s.rows.map(r=>`<div class="r"><p class="pain">${t(r[0])}</p><span class="arrow">${arrowSvg}</span><p class="gain">${t(r[1])}</p></div>`).join('')}</div>`,
     next: s => `<div class="split"><div>${head(s)}</div><div class="contact card"><div class="row"><p class="lbl">${t(s.labels.name)}</p><p class="v">${t(CONFIG.contactName)}</p></div><div class="row"><p class="lbl">${t(s.labels.email)}</p><a class="v" data-mail>${t(CONFIG.contactEmail)}</a></div><div class="row"><p class="lbl">${t(s.labels.phone)}</p><a class="v" data-tel>${t(CONFIG.contactPhone)}</a></div><a class="btn" data-href="bookingLink" target="_blank" rel="noopener">${t(s.button)} <span class="arr">&rarr;</span></a></div></div>`
   };
