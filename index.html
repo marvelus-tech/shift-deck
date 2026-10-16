@@ -130,8 +130,8 @@ const SLIDES = [
     title: "One product, *growing in releases.*",
     releases: [
       { tag: "Release 1", name: "Core fleet management", text: "Moves you off Excel. Semi automated operations: vehicles, renters, bookings and contracts, operational overview." },
-      { tag: "Release 2", name: "DocuSign and Stripe",   text: "Digital contracts and payments.", when: "About 4 weeks later. 2 to 4 weeks design, dev and test." },
-      { tag: "Release 3", name: "OCR document reading",  text: "Reads licences and documents.", when: "About 2 to 4 weeks design, dev and test." },
+      { tag: "Release 2", name: "DocuSign and Stripe",   text: "Digital contracts and payments.", when: "~4 weeks", whenNote: "Design, dev and test" },
+      { tag: "Release 3", name: "OCR document reading",  text: "Reads licences and documents.", when: "~4 weeks", whenNote: "Design, dev and test" },
       { tag: "Final",     name: "The full package",      text: "Everything working together, with smoother integration." }
     ],
     note: "Your monthly fee stays the same through all releases." },
@@ -204,7 +204,7 @@ h3{font-weight:600;letter-spacing:-.015em}
 .t-cover .mark .sl{color:rgba(255,255,255,.7)}
 .t-cover .for{font-size:max(calc(30 * var(--s)),15px);color:rgba(255,255,255,.78);margin-top:calc(46 * var(--s))}
 .t-cover .for strong{color:#fff;font-weight:600}
-.t-cover .tag{font-size:calc(54 * var(--s));font-weight:600;letter-spacing:-.03em;line-height:1.12;margin-top:calc(18 * var(--s));color:#fff}
+.t-cover .tag{font-size:max(calc(30 * var(--s)),15px);font-weight:400;letter-spacing:normal;line-height:1.4;margin-top:calc(8 * var(--s));color:rgba(255,255,255,.78)}
 .dark{color:#fff}
 .dark .eyebrow b{color:#fff}
 
@@ -277,8 +277,7 @@ h3{font-weight:600;letter-spacing:-.015em}
 .tiers td:last-child{text-align:right;font-weight:600;font-variant-numeric:tabular-nums}
 .tiers tr:first-child td:last-child{color:var(--primary)}
 .tiers .tnote{display:inline-block;margin-left:calc(12 * var(--s));font-size:max(calc(15 * var(--s)),9.5px);font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--soft);vertical-align:middle}
-.hl{margin-top:calc(28 * var(--s));display:flex;align-items:center;gap:calc(16 * var(--s));font-size:max(calc(25 * var(--s)),14px);font-weight:600}
-.hl::before{content:"";width:calc(12 * var(--s));height:calc(12 * var(--s));background:var(--primary);flex:none}
+.hl{margin-top:calc(28 * var(--s));font-size:max(calc(21 * var(--s)),12px);font-weight:400;color:var(--muted)}
 .fine{font-size:max(calc(21 * var(--s)),12px);color:var(--muted);margin-top:calc(10 * var(--s))}
 
 /* modules */
@@ -341,7 +340,6 @@ h3{font-weight:600;letter-spacing:-.015em}
 .pstep{position:relative}
 .dot{width:calc(60 * var(--s));height:calc(60 * var(--s));display:grid;place-items:center;background:#fff;border:1px solid var(--line);font-size:max(calc(22 * var(--s)),12px);font-weight:600;position:relative;z-index:1}
 .pstep.key .dot{background:var(--primary);color:#fff;border:0}
-.pstep.key .price{border-color:var(--primary);color:var(--primary);font-weight:600}
 .pstep h3{font-size:max(calc(28 * var(--s)),14px);margin-top:calc(32 * var(--s));line-height:1.18}
 .pstep p{font-size:max(calc(22 * var(--s)),12px);color:var(--muted);line-height:1.42;margin-top:calc(10 * var(--s))}
 .pstep .price{display:inline-block;margin-top:calc(14 * var(--s));font-size:max(calc(19 * var(--s)),11px);font-weight:500;padding:calc(6 * var(--s)) calc(14 * var(--s));background:#fff;border:1px solid var(--line)}
@@ -356,6 +354,7 @@ h3{font-weight:600;letter-spacing:-.015em}
 .m h3{font-size:max(calc(32 * var(--s)),15px);margin-top:calc(8 * var(--s));line-height:1.15}
 .m p{font-size:max(calc(22 * var(--s)),12px);color:var(--muted);line-height:1.42;margin-top:calc(10 * var(--s))}
 .m .when{font-size:max(calc(19 * var(--s)),11px);color:var(--ink);font-weight:500;margin-top:calc(14 * var(--s));padding-top:calc(12 * var(--s));border-top:1px solid var(--line)}
+.m .when .wn{display:block;color:var(--muted);font-weight:400;margin-top:calc(2 * var(--s))}
 .tl-note{margin-top:calc(60 * var(--s))}
 
 /* roadmap */
@@ -407,7 +406,7 @@ h3{font-weight:600;letter-spacing:-.015em}
   .nav{bottom:8px}.nav button{width:34px;height:34px}
   .inner{padding:30px 8% 20px}
   .pts p,.cmp p,.part p,.mod p,.pstep p,.m p,.road p,.lead,.plan p,.tiers td,.fine,.ben .pain,.dia .box p,.pc p{font-size:11px}
-  .pts h3,.part h3,.mod h3,.pstep h3,.m h3,.plan h3,.tiers h3,.road h3,.ben .gain,.dia .box h3,.hl{font-size:13px}
+  .pts h3,.part h3,.mod h3,.pstep h3,.m h3,.plan h3,.tiers h3,.road h3,.ben .gain,.dia .box h3{font-size:13px}.hl{font-size:11px}
   .m .when,.pstep .price,.chip,.lbl,.eyebrow,.caption{font-size:9.5px}
   .parts{margin-top:10px}.part{padding:5px 0 6px}.part p{margin-top:1px}
   .btn{margin-top:12px;padding:8px 14px;font-size:12px}
@@ -434,7 +433,7 @@ h3{font-weight:600;letter-spacing:-.015em}
   .bgphoto .hero.alt{background:linear-gradient(180deg,rgba(22,21,19,.75) 0%,rgba(22,21,19,.82) 100%),url("assets/img/hero-road.webp") 40% center/cover no-repeat}
   .t-cover .mark{font-size:31vw;margin-left:-4px}
   .t-cover .for{margin-top:24px}
-  .t-cover .tag{font-size:27px;margin-top:8px}
+  .t-cover .tag{margin-top:4px}
   .two{margin-top:22px;gap:12px}
   .pc{padding:20px 20px 22px}
   .pc .n{font-size:12px}.pc h3{font-size:28px;margin-top:6px}.pc p{font-size:15px;margin-top:6px}
@@ -468,7 +467,7 @@ h3{font-weight:600;letter-spacing:-.015em}
   .tiers{padding:12px 14px 8px}
   .tiers .lbl{font-size:10px}.tiers h3{font-size:14.5px;margin:3px 0 4px}
   .tiers td{font-size:13px;padding:6px 0}
-  .hl{font-size:13.5px;margin-top:12px;gap:8px}.hl::before{width:8px;height:8px}
+  .hl{font-size:11.5px;margin-top:12px}
   .fine{font-size:11.5px;margin-top:4px}
   .mods{grid-template-columns:1fr;gap:9px;margin-top:20px}
   .mod{padding:14px 16px 16px}
@@ -558,7 +557,7 @@ h3{font-weight:600;letter-spacing:-.015em}
     diagram: s => { const b=(o,c)=>`<div class="box ${c}"><h3>${t(o.name)}</h3><p>${t(o.text)}</p>${o.solves&&o.solves.length?`<div class="solves"><p class="lbl">${t(s.solvesLabel||'Solves')}</p><ul>${o.solves.map(x=>`<li>${t(x)}</li>`).join('')}</ul></div>`:''}</div>`;
       return `${head(s)}<div class="dia">${b(s.top,'top')}<div class="bus"><span></span><span></span><span></span><span></span><span></span></div><div class="row">${b(s.left,'')}<div class="link"></div>${b(s.middle,'mid')}<div class="link"></div>${b(s.right,'')}</div></div>`; },
     steps: s => `${head(s)}<div class="proc">${s.steps.map((p,k)=>`<div class="pstep${p.key?' key':''}"><div class="dot">${k+1}</div><h3>${t(p.name)}</h3><p>${t(p.text)}</p>${p.tag?`<span class="price">${t(p.tag)}</span>`:''}</div>`).join('')}</div>`,
-    releases: s => `${head(s)}<div class="tl"><div class="ms"><div class="track"></div>${s.releases.map(r=>`<div class="m"><div class="pin"></div><p class="lbl">${t(r.tag)}</p><h3>${t(r.name)}</h3><p>${t(r.text)}</p>${r.when?`<p class="when">${t(r.when)}</p>`:''}</div>`).join('')}</div></div><p class="hl tl-note">${t(s.note)}</p>`,
+    releases: s => `${head(s)}<div class="tl"><div class="ms"><div class="track"></div>${s.releases.map(r=>`<div class="m"><div class="pin"></div><p class="lbl">${t(r.tag)}</p><h3>${t(r.name)}</h3><p>${t(r.text)}</p>${r.when?`<p class="when">${t(r.when)}${r.whenNote?`<span class="wn">${t(r.whenNote)}</span>`:''}</p>`:''}</div>`).join('')}</div></div><p class="hl tl-note">${t(s.note)}</p>`,
     benefits: s => `${head(s)}<div class="ben"><div class="r head"><p class="lbl">${t(s.headPain)}</p><span></span><p class="lbl">${t(s.headGain)}</p></div>${s.rows.map(r=>`<div class="r"><p class="pain">${t(r[0])}</p><span class="arrow">${arrowSvg}</span><p class="gain">${t(r[1])}</p></div>`).join('')}</div>`,
     next: s => `<div class="split"><div>${head(s)}</div><div class="contact card"><div class="row"><p class="lbl">${t(s.labels.name)}</p><p class="v">${t(CONFIG.contactName)}</p></div><div class="row"><p class="lbl">${t(s.labels.email)}</p><a class="v" data-mail>${t(CONFIG.contactEmail)}</a></div><div class="row"><p class="lbl">${t(s.labels.phone)}</p><a class="v" data-tel>${t(CONFIG.contactPhone)}</a></div><a class="btn" data-href="bookingLink" target="_blank" rel="noopener">${t(s.button)} <span class="arr">&rarr;</span></a></div></div>`
   };
