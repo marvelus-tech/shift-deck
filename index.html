@@ -67,26 +67,22 @@ const SLIDES = [
       { n: "02", name: "Communicating", text: "Every hire runs across four channels at once.",      chips: ["Marketplace", "Email", "Phone", "Messages"] }
     ] },
 
-  { type: "points", chapter: "Problem 1 of 3", sub: "Managing",
-    title: "Manual, disconnected and *error prone.*",
-    lead: "Cars, contracts and people sit in separate files that only you keep up to date.",
-    points: [
-      { title: "Missed entries",              text: "Forget to enter something and it is gone." },
-      { title: "Missed maintenance",          text: "Service dates sit in a file, not in front of you." },
-      { title: "After hours booking errors",  text: "Late bookings get entered wrong, or not at all." }
+  { type: "today", chapter: "Problem", sub: "Where you are today",
+    title: "Three things *slow you down.*",
+    columns: [
+      { n: "01", name: "Managing",
+        lines: ["Cars, contracts and people live in Excel or Word.",
+                "Forget to enter something and it is gone.",
+                "Maintenance and after hours bookings slip."] },
+      { n: "02", name: "Communicating",
+        lines: ["Every hire runs across Marketplace, email, phone and messages.",
+                "Dates, car, payment, ID and pickup, all by message.",
+                "Back and forth at every step of the hire."] },
+      { n: "03", name: "Onboarding",
+        lines: ["Competitors like Rent AAA take 20 to 30 minutes to onboard.",
+                "Long, intimidating sign up scares renters away.",
+                "Paperwork still has to happen on every hire."] }
     ] },
-
-  { type: "compare", chapter: "Problem 2 of 3", sub: "Communicating",
-    title: "Keep your channels. *Cut the back and forth.*",
-    lead: "Marketplace, email, phone and messages stay. SHIFT does not replace them. It cuts the paperwork and back and forth behind them.",
-    before: { label: "Today",      big: "Every step", text: "Dates, car, payment, ID and pickup, all by message." },
-    after:  { label: "With SHIFT", big: "Start and end", text: "You talk to renters at the start and end of each hire." } },
-
-  { type: "compare", chapter: "Problem 3 of 3", sub: "Onboarding",
-    title: "Long onboarding *scares renters away.*",
-    lead: "Competitors like Rent AAA put renters through a long, intimidating onboarding.",
-    before: { label: "Competitors", big: "20 to 30 min", text: "Of onboarding before a renter can drive." },
-    after:  { label: "With SHIFT",  big: "Less admin",   text: "The required paperwork and communication stay. The admin around them goes." } },
 
   /* ---------- SOLUTION ---------- */
   { type: "parts", chapter: "Solution",
@@ -243,6 +239,14 @@ h3{font-weight:600;letter-spacing:-.015em}
 .pc h3{font-size:calc(60 * var(--s));letter-spacing:-.035em;margin-top:calc(18 * var(--s))}
 .pc p{font-size:max(calc(28 * var(--s)),15px);color:var(--muted);line-height:1.4;margin-top:calc(14 * var(--s))}
 
+/* today: three problem columns */
+.p3{display:grid;grid-template-columns:repeat(3,1fr);gap:calc(56 * var(--s));margin-top:calc(70 * var(--s))}
+.p3 .col{border-top:2px solid var(--ink);padding-top:calc(28 * var(--s))}
+.p3 .n{font-size:max(calc(20 * var(--s)),11px);font-weight:700;color:var(--primary);letter-spacing:.06em}
+.p3 h3{font-size:calc(46 * var(--s));letter-spacing:-.03em;margin-top:calc(12 * var(--s))}
+.p3 ul{list-style:none;margin-top:calc(22 * var(--s))}
+.p3 li{font-size:max(calc(25 * var(--s)),13px);line-height:1.4;color:var(--muted);padding:calc(16 * var(--s)) 0;border-top:1px solid var(--line)}
+.p3 li:first-child{border-top:0;padding-top:0}
 /* points */
 .pts{list-style:none}
 .pts li{padding:calc(30 * var(--s)) 0 calc(32 * var(--s)) calc(40 * var(--s));border-top:1px solid var(--line);position:relative}
@@ -417,6 +421,7 @@ h3{font-weight:600;letter-spacing:-.015em}
   .parts{margin-top:10px}.part{padding:5px 0 6px}.part p{margin-top:1px}
   .btn{margin-top:12px;padding:8px 14px;font-size:12px}
   .t-parts .inner{padding-top:18px;padding-bottom:10px}
+  .p3{margin-top:18px;gap:22px}.p3 .col{padding-top:10px}.p3 h3{font-size:17px;margin-top:2px}.p3 ul{margin-top:6px}.p3 li{font-size:11px;padding:5px 0}.p3 .n{font-size:9.5px}
   .solves li,.solves{font-size:10.5px}.solves{margin-top:6px;padding-top:5px;line-height:1.4}.mod.top{display:block}.mod.top .solves{display:block;margin-top:4px}.mod.top p{margin-top:2px}
   .t-modules .inner{padding-top:16px;padding-bottom:8px}.t-modules .eyebrow{margin-bottom:6px}.mod.top > .lbl{display:none}.t-modules .status{display:none}.t-modules h2{font-size:22px}
   .solves .lbl{display:inline;margin-right:6px}.solves ul{display:inline;margin:0}.solves li{display:inline;padding:0}.solves li::before{display:none}.solves li:not(:last-child)::after{content:"  \00B7  ";white-space:pre;color:var(--soft)}.mod{padding:12px 14px}.mods{margin-top:16px}.status{margin-top:8px}.status span{font-size:9px}
@@ -441,6 +446,9 @@ h3{font-weight:600;letter-spacing:-.015em}
   .pc{padding:20px 20px 22px}
   .pc .n{font-size:12px}.pc h3{font-size:28px;margin-top:6px}.pc p{font-size:15px;margin-top:6px}
   .chips{margin-top:14px;gap:6px}.chip{font-size:11px;padding:5px 10px}
+  .p3{grid-template-columns:1fr;gap:18px;margin-top:20px}
+  .p3 .col{padding-top:10px}.p3 .n{font-size:11px}.p3 h3{font-size:20px;margin-top:2px}
+  .p3 ul{margin-top:6px}.p3 li{font-size:13.5px;padding:4px 0;border-top:0}
   .pts li{padding:14px 0 14px 22px}
   .pts li::before{top:21px;width:8px;height:8px}
   .pts h3{font-size:16.5px}.pts p{font-size:14px;margin-top:3px}
@@ -545,6 +553,7 @@ h3{font-weight:600;letter-spacing:-.015em}
   const R = {
     cover: s => `<h1 class="mark"><span class="sl">/</span>SHIFT</h1><p class="for">${t(s.prepared).replace(esc(fill(CONFIG.clientName)),'<strong>$&</strong>')}</p><p class="tag">${t(s.tagline)}</p>`,
     twoProblems: s => `${head(s)}<div class="two">${s.cards.map(c=>`<div class="pc card"><p class="n">${t(c.n)}</p><h3>${t(c.name)}</h3><p>${t(c.text)}</p><div class="chips">${(c.chips||[]).map(x=>`<span class="chip">${t(x)}</span>`).join('')}</div></div>`).join('')}</div>`,
+    today: s => `${head(s)}<div class="p3">${s.columns.map(c=>`<div class="col"><p class="n">${t(c.n)}</p><h3>${t(c.name)}</h3><ul>${c.lines.map(l=>`<li>${t(l)}</li>`).join('')}</ul></div>`).join('')}</div>`,
     points: s => `<div class="split"><div>${head(s)}</div><ul class="pts">${s.points.map(p=>`<li><h3>${t(p.title)}</h3><p>${t(p.text)}</p></li>`).join('')}</ul></div>`,
     compare: s => `<div class="split"><div>${head(s)}</div><div class="cmp">${[s.before,s.after].map((c,k)=>`<div class="c${k?' on':''}"><p class="lbl">${t(c.label)}</p><p class="big">${t(c.big)}</p><p>${t(c.text)}</p></div>`).join('')}</div></div>`,
     parts: s => `<div class="split"><div>${head(s)}<div class="parts">${s.parts.map(p=>`<div class="part">${p.tag?`<p class="lbl">${t(p.tag)}</p>`:''}<h3>${t(p.name)}${p.core?`<span class="core">${t(p.core)}</span>`:''}</h3><p>${t(p.text)}</p></div>`).join('')}</div><a class="btn" data-href="prototypeUrl" target="_blank" rel="noopener">${t(s.button)} <span class="arr">&rarr;</span></a></div><div class="shots"><div class="browser"><div class="bar"><i></i><i></i><i></i></div><img src="assets/img/proto-desktop.jpg" alt="SHIFT storefront on desktop, live prototype"></div><div class="phone"><img src="assets/img/proto-mobile.jpg" alt="SHIFT storefront on a phone, live prototype"></div><p class="caption">${t(s.caption)}</p></div></div>`,
