@@ -6,7 +6,7 @@ Everything you need to change is at the top of `index.html`, in two blocks. You 
 - `clientName`: shown on the cover ("Prepared for ...").
 - `contactName`, `contactEmail`, `contactPhone`, `bookingLink`: shown on the last slide. Placeholders in square brackets, like `[contact email]`, stay as plain text and their links do nothing until you replace them.
 - `prototypeUrl`: the "View live prototype" button.
-- Prices: `introPrice`, `introLength`, `retainerPrice`, `monthlyBase`, `monthlyUnit`, `monthlyNote`, `currency`, and the `fleetTiers` list (each row is `["cars", "price"]`, with an optional third item for a small note, e.g. `["1 to 5 cars", "Free", "First month trial"]`). Keep the ranges from overlapping.
+- Prices: `introPrice`, `introLength`, `retainerPrice`, `monthlyBase`, `monthlyUnit`, `monthlyNote`, `currency`, and the `fleetTiers` list (each row is `["cars", "price"]`, with an optional third item for a small note, e.g. `["6 to 10 cars", "+$25/month", "Most popular"]`). Keep the ranges from overlapping.
 - Standard prices: `retainerStandard` and `monthlyStandard` appear struck through beside the current price. Set either to `""` to hide its strikethrough. `dealLabel` (default "Launch pricing") is the small tag above any discounted price; set it to `""` to hide it.
 
 ## 2. SLIDES: all slide text
