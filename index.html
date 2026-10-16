@@ -116,11 +116,16 @@ const SLIDES = [
   { type: "modules", chapter: "How it works", sub: "Owner operations system",
     title: "Four modules, *one console.*",
     modules: [
-      { name: "Operational management", text: "The overview of your whole operation.", tag: "Dashboard layer", top: true },
-      { name: "Vehicle management",     text: "Every vehicle, its status and its maintenance.", status: ["Available", "Booked", "Maintenance"] },
-      { name: "Renter management",      text: "Renter accounts and profiles." },
-      { name: "Bookings and contracts", text: "Links a vehicle to a renter for each hire." }
-    ] },
+      { name: "Operational management", text: "The overview of your whole operation.", tag: "Dashboard layer", top: true,
+        solves: ["Stitching sheets together each morning"] },
+      { name: "Vehicle management",     text: "Every vehicle, its status and its maintenance.", status: ["Available", "Booked", "Maintenance"],
+        solves: ["Missed maintenance", "Not knowing which cars are idle or live", "Cars tracked in Excel"] },
+      { name: "Renter management",      text: "Renter accounts and profiles.",
+        solves: ["Long, intimidating onboarding", "Manual ID checks", "Renter details scattered across channels"] },
+      { name: "Bookings and contracts", text: "Links a vehicle to a renter for each hire.",
+        solves: ["Double bookings and after hours errors", "Contracts in Word", "Back and forth on every hire"] }
+    ],
+    solvesLabel: "Solves" },
 
   { type: "diagram", chapter: "How it works", sub: "Owner operations system",
     title: "How the modules *fit together.*",
@@ -136,8 +141,8 @@ const SLIDES = [
       { name: "Discovery",                    text: "We map your vehicles, renters and hires.", tag: "{retainerPrice} retainer", key: true },
       { name: "Adapt the platform",           text: "Shaped to your business." },
       { name: "Set up vehicles and renters",  text: "Your data moves in from Excel." },
-      { name: "Go live",                      text: "Release 1. You run on SHIFT.", key: true },
-      { name: "Iterate with you",             text: "We refine it as you use it." }
+      { name: "Go live",                      text: "Release 1. Monthly payments begin.", key: true },
+      { name: "Ongoing support",              text: "We support and refine it as you use it." }
     ] },
 
   /* ---------- DELIVERY PATH ---------- */
@@ -303,6 +308,13 @@ h3{font-weight:600;letter-spacing:-.015em}
 .mod.top p{color:rgba(255,255,255,.72);margin:0}
 .mod h3{font-size:max(calc(32 * var(--s)),16px)}
 .mod p{font-size:max(calc(23 * var(--s)),13px);color:var(--muted);line-height:1.4;margin-top:calc(10 * var(--s))}
+.solves{margin-top:calc(22 * var(--s));padding-top:calc(18 * var(--s));border-top:1px solid var(--line)}
+.solves ul{list-style:none;margin-top:calc(10 * var(--s));display:grid;gap:calc(8 * var(--s))}
+.solves li{font-size:max(calc(21 * var(--s)),12px);line-height:1.35;padding-left:calc(26 * var(--s));position:relative}
+.solves li::before{content:"";position:absolute;left:0;top:.5em;width:calc(10 * var(--s));height:calc(10 * var(--s));background:var(--primary)}
+.mod.top .solves{margin:0 0 0 auto;padding:0;border:0;display:flex;align-items:baseline;gap:calc(14 * var(--s))}
+.mod.top .solves ul{margin:0}
+.mod.top .solves li{color:#fff}
 .status{display:flex;gap:calc(8 * var(--s));flex-wrap:wrap;margin-top:calc(18 * var(--s))}
 .status span{font-size:max(calc(16 * var(--s)),10px);font-weight:500;padding:calc(6 * var(--s)) calc(12 * var(--s));background:#fff;border:1px solid var(--line);display:inline-flex;align-items:center;gap:calc(8 * var(--s))}
 .status span::before{content:"";width:calc(9 * var(--s));height:calc(9 * var(--s));background:currentColor}
@@ -405,6 +417,9 @@ h3{font-weight:600;letter-spacing:-.015em}
   .parts{margin-top:10px}.part{padding:5px 0 6px}.part p{margin-top:1px}
   .btn{margin-top:12px;padding:8px 14px;font-size:12px}
   .t-parts .inner{padding-top:18px;padding-bottom:10px}
+  .solves li,.solves{font-size:10.5px}.solves{margin-top:6px;padding-top:5px;line-height:1.4}.mod.top{display:block}.mod.top .solves{display:block;margin-top:4px}.mod.top p{margin-top:2px}
+  .t-modules .inner{padding-top:16px;padding-bottom:8px}.t-modules .eyebrow{margin-bottom:6px}.mod.top > .lbl{display:none}.t-modules .status{display:none}.t-modules h2{font-size:22px}
+  .solves .lbl{display:inline;margin-right:6px}.solves ul{display:inline;margin:0}.solves li{display:inline;padding:0}.solves li::before{display:none}.solves li:not(:last-child)::after{content:"  \00B7  ";white-space:pre;color:var(--soft)}.mod{padding:12px 14px}.mods{margin-top:16px}.status{margin-top:8px}.status span{font-size:9px}
   .t-parts h2{font-size:22px}.t-parts .eyebrow{margin-bottom:8px}.part .lbl{font-size:8.5px}
 }
 
@@ -459,6 +474,10 @@ h3{font-weight:600;letter-spacing:-.015em}
   .mod.top{display:block}.mod.top p{margin-top:4px}
   .mod h3{font-size:16.5px}.mod p{font-size:13.5px;margin-top:3px}
   .status{margin-top:8px;gap:5px}.status span{font-size:10.5px;padding:3px 7px}
+  .solves{margin-top:7px;padding-top:6px;line-height:1.4;font-size:12.5px}.solves li{font-size:12.5px}
+  .mod.top .solves{display:block;margin-top:6px}
+  .mod{padding:12px 14px 13px}.mods{gap:8px;margin-top:16px}
+  .solves .lbl{display:inline;margin-right:6px}.solves ul{display:inline;margin:0}.solves li{display:inline;padding:0}.solves li::before{display:none}.solves li:not(:last-child)::after{content:"  \00B7  ";white-space:pre;color:var(--soft)}
   .dia{margin-top:22px}
   .dia .box{padding:12px 14px 13px}
   .dia .box.top{width:auto}
@@ -530,7 +549,7 @@ h3{font-weight:600;letter-spacing:-.015em}
     compare: s => `<div class="split"><div>${head(s)}</div><div class="cmp">${[s.before,s.after].map((c,k)=>`<div class="c${k?' on':''}"><p class="lbl">${t(c.label)}</p><p class="big">${t(c.big)}</p><p>${t(c.text)}</p></div>`).join('')}</div></div>`,
     parts: s => `<div class="split"><div>${head(s)}<div class="parts">${s.parts.map(p=>`<div class="part">${p.tag?`<p class="lbl">${t(p.tag)}</p>`:''}<h3>${t(p.name)}${p.core?`<span class="core">${t(p.core)}</span>`:''}</h3><p>${t(p.text)}</p></div>`).join('')}</div><a class="btn" data-href="prototypeUrl" target="_blank" rel="noopener">${t(s.button)} <span class="arr">&rarr;</span></a></div><div class="shots"><div class="browser"><div class="bar"><i></i><i></i><i></i></div><img src="assets/img/proto-desktop.jpg" alt="SHIFT storefront on desktop, live prototype"></div><div class="phone"><img src="assets/img/proto-mobile.jpg" alt="SHIFT storefront on a phone, live prototype"></div><p class="caption">${t(s.caption)}</p></div></div>`,
     pricing: s => `${head(s)}<div class="price-grid"><div class="plans">${s.plans.map((p,k)=>`<div class="plan card"><span class="num">${k+1}</span><div><h3>${t(p.name)}</h3><p>${t(p.note)}</p></div><div class="amt">${hasWas(p)&&CONFIG.dealLabel?`<span class="deal">${t(CONFIG.dealLabel)}</span>`:''}<span class="now">${hasWas(p)?`<s class="was" aria-label="Standard price">${t(p.was)}${p.unit?t(p.unit):''}</s>`:''}${t(p.amount)}${p.unit?`<small>${t(p.unit)}</small>`:''}</span></div></div>`).join('')}</div><div class="tiers card"><p class="lbl">${t(s.tiersLabel)}</p><h3>${t(s.tiersTitle)}</h3><table>${CONFIG.fleetTiers.map(r=>`<tr><td>${t(r[0])}${r[2]?`<small class="tnote">${t(r[2])}</small>`:''}</td><td>${t(r[1])}</td></tr>`).join('')}</table></div></div><p class="hl">${t(s.highlight)}</p><p class="fine">${t(s.fine)}</p>`,
-    modules: s => `${head(s)}<div class="mods">${s.modules.map(m=>`<div class="mod card${m.top?' top':''}">${m.tag?`<p class="lbl">${t(m.tag)}</p>`:''}<h3>${t(m.name)}</h3><p>${t(m.text)}</p>${m.status?`<div class="status">${m.status.map((x,k)=>`<span class="st-${k}">${t(x)}</span>`).join('')}</div>`:''}</div>`).join('')}</div>`,
+    modules: s => `${head(s)}<div class="mods">${s.modules.map(m=>`<div class="mod card${m.top?' top':''}">${m.tag?`<p class="lbl">${t(m.tag)}</p>`:''}<h3>${t(m.name)}</h3><p>${t(m.text)}</p>${m.status?`<div class="status">${m.status.map((x,k)=>`<span class="st-${k}">${t(x)}</span>`).join('')}</div>`:''}${m.solves&&m.solves.length?`<div class="solves"><p class="lbl">${t(s.solvesLabel||'Solves')}</p><ul>${m.solves.map(x=>`<li>${t(x)}</li>`).join('')}</ul></div>`:''}</div>`).join('')}</div>`,
     diagram: s => { const b=(o,c)=>`<div class="box ${c}"><h3>${t(o.name)}</h3><p>${t(o.text)}</p></div>`;
       return `${head(s)}<div class="dia">${b(s.top,'top')}<div class="bus"><span></span><span></span><span></span><span></span><span></span></div><div class="row">${b(s.left,'')}<div class="link"></div>${b(s.middle,'mid')}<div class="link"></div>${b(s.right,'')}</div></div>`; },
     steps: s => `${head(s)}<div class="proc">${s.steps.map((p,k)=>`<div class="pstep${p.key?' key':''}"><div class="dot">${k+1}</div><h3>${t(p.name)}</h3><p>${t(p.text)}</p>${p.tag?`<span class="price">${t(p.tag)}</span>`:''}</div>`).join('')}</div>`,
