@@ -67,14 +67,14 @@ const SLIDES = [
         lines: ["Cars, contracts and people live in Excel or Word.",
                 "Forget to enter something and it is gone.",
                 "Maintenance and after hours bookings slip."] },
-      { n: "02", name: "Communicating",
-        lines: ["Every hire runs across Marketplace, email, phone and messages.",
-                "Dates, car, payment, ID and pickup, all by message.",
-                "Back and forth at every step of the hire."] },
-      { n: "03", name: "Onboarding",
+      { n: "02", name: "Onboarding",
         lines: ["Competitors like Rent AAA take 20 to 30 minutes to onboard.",
                 "Long, intimidating sign up scares renters away.",
-                "Paperwork still has to happen on every hire."] }
+                "Paperwork still has to happen on every hire."] },
+      { n: "03", name: "Communicating",
+        lines: ["Every hire runs across Marketplace, email, phone and messages.",
+                "Dates, car, payment, ID and pickup, all by message.",
+                "Back and forth at every step of the hire."] }
     ] },
 
   /* ---------- SOLUTION ---------- */
@@ -94,16 +94,17 @@ const SLIDES = [
     solvesLabel: "Solves",
     top:    { name: "Operational management", text: "The overview of everything below",
               solves: ["Stitching sheets together each morning"] },
-    left:   { name: "Vehicle management",     text: "Status, availability, maintenance",
+    left:   { name: "Fleet management",       text: "Add and manage vehicle fleet.",
               solves: ["Missed maintenance", "Not knowing which cars are idle or live", "Cars tracked in Excel"] },
     middle: { name: "Bookings and contracts", text: "Links a vehicle to a renter for each hire",
               solves: ["Double bookings and after hours errors", "Contracts in Word", "Back and forth on every hire"] },
-    right:  { name: "Renter management",      text: "Renter accounts and profiles",
-              solves: ["Long, intimidating onboarding", "Manual ID checks", "Renter details scattered across channels"] } },
+    right:  { name: "Renter management",      text: "The renter view. See the contract and the car they have.",
+              solves: ["Renters unsure of their contract or car", "Documents scattered across channels"] } },
 
   /* ---------- PRICING ---------- */
   { type: "pricing", chapter: "Pricing",
-    title: "Simple pricing that *grows with your fleet.*",
+    title: "Start your SHIFT *owner account.*",
+    lead: "Setup cost and monthly running costs.",
     plans: [
       { name: "Intro",              note: "{introLength}",  amount: "{introPrice}" },
       { name: "Discovery retainer", note: "Before Release 1", amount: "{retainerPrice}", was: "{retainerStandard}" },
@@ -141,12 +142,12 @@ const SLIDES = [
     title: "Every pain, *answered.*",
     headPain: "Today", headGain: "With SHIFT",
     rows: [
+      ["Renting from Marketplace only",   "Your own website and inventory funnel"],
       ["Excel errors and missed entries", "One source of truth for vehicles, renters and bookings"],
       ["Missed maintenance",              "Maintenance tracked per vehicle"],
       ["After hours booking errors",      "Renters book and pay in the storefront any time"],
       ["Back and forth on every channel", "Contact cut down to the start and end of each hire"],
-      ["Slow onboarding",                 "Renter profiles and digital contracts cut onboarding admin"],
-      ["Renting from Marketplace only",   "Your own website and inventory funnel"]
+      ["Slow onboarding",                 "Renter profiles and digital contracts cut onboarding admin"]
     ] },
 
   /* ---------- NEXT STEP ---------- */
