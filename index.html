@@ -528,6 +528,42 @@ h3{font-weight:600;letter-spacing:-.015em}
   .count{font-size:12px}
 }
 .btn.tlink{padding:0;background:none}
+/* Solves lists: always left aligned with a hanging bullet */
+.dia .box .solves ul,.dia .box .solves li{text-align:left}
+.dia .box.top .solves{justify-content:center}
+.dia .box.top .solves ul{justify-items:start}
+/* phone sideways: diagram gets real bullet lists and scrolls instead of tiny type */
+@media (max-height:520px) and (min-aspect-ratio:4/5) and (min-width:761px){
+  .t-diagram{overflow-y:auto;-webkit-overflow-scrolling:touch}
+  .t-diagram .inner{height:auto;min-height:100%;padding-bottom:16px}
+  .dia .box p{font-size:11px}.dia .box h3{font-size:13px}
+  .dia .box .solves .lbl{display:block;margin:0 0 3px}
+  .dia .box .solves ul{display:grid;gap:3px;margin:0}
+  .dia .box .solves li{display:block;font-size:11px;line-height:1.35;padding-left:11px}
+  .dia .box .solves li::before{display:block;width:5px;height:5px;top:.5em}
+  .dia .box .solves li::after{content:none !important}
+  .dia .box.top .solves{display:flex;gap:12px}
+  .dia .box.top .solves .lbl{margin:0}
+}
+/* phone portrait: stacked, readable cards that scroll inside the slide */
+@media (max-width:760px),(max-aspect-ratio:4/5){
+  .t-diagram .inner{justify-content:flex-start;padding:56px 20px 112px}
+  .t-diagram h2{font-size:30px}
+  .dia{margin-top:20px;display:grid;gap:12px}
+  .dia .bus,.dia .link{display:none}
+  .dia .row{display:grid;grid-template-columns:1fr;gap:12px}
+  .dia .box,.dia .row .box,.dia .box.top{padding:18px 18px 20px;text-align:left}
+  .dia .box h3{font-size:19px;line-height:1.25}
+  .dia .box p{font-size:14.5px;line-height:1.45;margin-top:4px}
+  .dia .box .solves,.dia .box.top .solves{display:block !important;margin-top:14px;padding-top:12px}
+  .dia .box .solves .lbl{display:block;margin:0 0 8px;font-size:11px}
+  .dia .box .solves ul{display:grid;gap:8px;margin:0}
+  .dia .box .solves li{display:block;font-size:14.5px;line-height:1.45;padding-left:18px}
+  .dia .box .solves li::before{display:block;width:7px;height:7px;top:.55em}
+  .dia .box .solves li::after{content:none !important}
+  .nav{background:rgba(246,244,239,.94);-webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px);padding:5px 5px 5px 14px;border:1px solid var(--line);box-shadow:0 4px 18px rgba(22,21,19,.08)}
+  .on-dark .nav{background:rgba(22,21,19,.55);border-color:rgba(255,255,255,.15)}
+}
 </style>
 </head>
 <body>
