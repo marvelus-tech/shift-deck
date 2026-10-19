@@ -86,7 +86,9 @@ const SLIDES = [
       { name: "Renter management",        text: "All your rental client info in one place: profiles, contracts and cars." }
     ],
     button: "View live prototype",
-    caption: "Storefront, live prototype" },
+    image: { src: "assets/img/proto-fleet-ref.jpg", ratio: "2580/1646",
+             alt: "SHIFT staff portal fleet table showing vehicle status, next service, insurance expiry and an Add Vehicle button" },
+    caption: "Owner console, fleet view" },
 
   /* ---------- HOW IT WORKS ---------- */
   { type: "diagram", chapter: "How it works",
@@ -258,6 +260,7 @@ h3{font-weight:600;letter-spacing:-.015em}
 .phone{position:absolute;right:calc(-10 * var(--s));bottom:calc(0 * var(--s));width:calc(240 * var(--s));border-radius:calc(38 * var(--s));padding:calc(9 * var(--s));background:var(--ink);box-shadow:var(--sh-xl)}
 .phone img{display:block;width:100%;border-radius:calc(30 * var(--s));aspect-ratio:390/844;object-fit:cover}
 .caption{position:absolute;left:0;bottom:calc(10 * var(--s));font-size:max(calc(17 * var(--s)),10px);color:var(--soft);font-weight:500}
+.shots.solo{height:auto}.shots.solo .browser{position:relative;top:0;width:100%}.shots.solo .caption{position:static;margin-top:calc(18 * var(--s))}
 
 /* pricing */
 .price-grid{display:grid;grid-template-columns:1.25fr 1fr;gap:calc(36 * var(--s));margin-top:calc(48 * var(--s))}
@@ -460,6 +463,7 @@ h3{font-weight:600;letter-spacing:-.015em}
   .browser{position:relative;top:0;width:80%}
   .browser .bar{height:14px;padding:0 7px;gap:4px}.browser .bar i{width:5px;height:5px}
   .phone{width:30%;right:0;bottom:8px;border-radius:16px;padding:4px}.phone img{border-radius:12px}
+  .shots.solo{padding-bottom:0}.shots.solo .browser{width:100%}
   .caption{position:static;margin-top:8px;font-size:11px}
   .price-grid{margin-top:18px;gap:10px}
   .plans{gap:8px}
@@ -591,7 +595,7 @@ h3{font-weight:600;letter-spacing:-.015em}
     today: s => `${head(s)}<div class="p3">${s.columns.map(c=>`<div class="col"><p class="n">${t(c.n)}</p><h3>${t(c.name)}</h3><ul>${c.lines.map(l=>`<li>${t(l)}</li>`).join('')}</ul></div>`).join('')}</div>`,
     points: s => `<div class="split"><div>${head(s)}</div><ul class="pts">${s.points.map(p=>`<li><h3>${t(p.title)}</h3><p>${t(p.text)}</p></li>`).join('')}</ul></div>`,
     compare: s => `<div class="split"><div>${head(s)}</div><div class="cmp">${[s.before,s.after].map((c,k)=>`<div class="c${k?' on':''}"><p class="lbl">${t(c.label)}</p><p class="big">${t(c.big)}</p><p>${t(c.text)}</p></div>`).join('')}</div></div>`,
-    parts: s => `<div class="split"><div>${head(s)}<div class="parts">${s.parts.map(p=>`<div class="part">${p.tag?`<p class="lbl">${t(p.tag)}</p>`:''}<h3>${t(p.name)}${p.core?`<span class="core">${t(p.core)}</span>`:''}</h3><p>${t(p.text)}</p></div>`).join('')}</div><a class="btn tlink" data-href="prototypeUrl" target="_blank" rel="noopener">${t(s.button)} <span class="arr">&rarr;</span></a></div><div class="shots"><div class="browser"><div class="bar"><i></i><i></i><i></i></div><img src="assets/img/proto-desktop-v2.jpg" alt="SHIFT storefront on desktop, live prototype"></div><div class="phone"><img src="assets/img/proto-mobile-v2.jpg" alt="SHIFT storefront on a phone, live prototype"></div><p class="caption">${t(s.caption)}</p></div></div>`,
+    parts: s => `<div class="split"><div>${head(s)}<div class="parts">${s.parts.map(p=>`<div class="part">${p.tag?`<p class="lbl">${t(p.tag)}</p>`:''}<h3>${t(p.name)}${p.core?`<span class="core">${t(p.core)}</span>`:''}</h3><p>${t(p.text)}</p></div>`).join('')}</div><a class="btn tlink" data-href="prototypeUrl" target="_blank" rel="noopener">${t(s.button)} <span class="arr">&rarr;</span></a></div><div class="shots${s.phone?'':' solo'}"><div class="browser"><div class="bar"><i></i><i></i><i></i></div><img src="${s.image.src}" alt="${esc(s.image.alt)}" style="aspect-ratio:${s.image.ratio}"></div>${s.phone?`<div class="phone"><img src="${s.phone.src}" alt="${esc(s.phone.alt)}"></div>`:''}<p class="caption">${t(s.caption)}</p></div></div>`,
     pricing: s => `${head(s)}<div class="price-grid"><div class="plans">${s.plans.map((p,k)=>`<div class="plan card"><span class="num">${k+1}</span><div><h3>${t(p.name)}</h3><p>${t(p.note)}</p></div><div class="amt">${hasWas(p)&&CONFIG.dealLabel?`<span class="deal">${t(CONFIG.dealLabel)}</span>`:''}<span class="now">${hasWas(p)?`<s class="was" aria-label="Standard price">${t(p.was)}${p.unit?t(p.unit):''}</s>`:''}${t(p.amount)}${p.unit?`<small>${t(p.unit)}</small>`:''}</span></div></div>`).join('')}</div><div class="tiers card">${s.tiersLabel?`<p class="lbl">${t(s.tiersLabel)}</p>`:''}<h3>${t(s.tiersTitle)}</h3><table>${CONFIG.fleetTiers.map(r=>`<tr><td>${t(r[0])}${r[2]?`<small class="tnote">${t(r[2])}</small>`:''}</td><td>${t(r[1])}</td></tr>`).join('')}</table></div></div><p class="hl">${t(s.highlight)}</p><p class="fine">${t(s.fine)}</p>`,
     modules: s => `${head(s)}<div class="mods">${s.modules.map(m=>`<div class="mod card${m.top?' top':''}">${m.tag?`<p class="lbl">${t(m.tag)}</p>`:''}<h3>${t(m.name)}</h3><p>${t(m.text)}</p>${m.status?`<div class="status">${m.status.map((x,k)=>`<span class="st-${k}">${t(x)}</span>`).join('')}</div>`:''}${m.solves&&m.solves.length?`<div class="solves"><p class="lbl">${t(s.solvesLabel||'Solves')}</p><ul>${m.solves.map(x=>`<li>${t(x)}</li>`).join('')}</ul></div>`:''}</div>`).join('')}</div>`,
     diagram: s => { const b=(o,c)=>`<div class="box ${c}"><h3>${t(o.name)}</h3><p>${t(o.text)}</p>${o.solves&&o.solves.length?`<div class="solves"><p class="lbl">${t(s.solvesLabel||'Solves')}</p><ul>${o.solves.map(x=>`<li>${t(x)}</li>`).join('')}</ul></div>`:''}</div>`;
